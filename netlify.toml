@@ -1,6 +1,5 @@
 [build]
-  command = "NODE_ENV=production gatsby build"
-  publish = "public/"
+  base = "public/"
 
 [template]
   incoming-hooks = ["Ghost"]
