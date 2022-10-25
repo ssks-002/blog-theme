@@ -1,5 +1,5 @@
 [build]
-  publish = "public/"
+  base = "public/"
 
 [template]
   incoming-hooks = ["Ghost"]
