@@ -21,56 +21,56 @@ what's here to work the way you'd like it to.
 @font-face {
     font-family: 'Inter';
     font-weight: 800;
-    src: url('../utils/fonts/Inter-Black.ttf') format('truetype');
+    src: url('../utils/fonts/Inter-Black.woff2') format('woff2');
 }
 
 @font-face {
     font-family: 'Inter';
     font-weight: bold;
-    src: url('../utils/fonts/Inter-Bold.ttf') format('truetype');
+    src: url('../utils/fonts/Inter-Bold.woff2') format('woff2');
 }
 
 @font-face {
     font-family: 'Inter';
     font-weight: medium;
-    src: url('../utils/fonts/Inter-Medium.ttf') format('truetype');
+    src: url('../utils/fonts/Inter-Medium.woff2') format('woff2');
 }
 
 @font-face {
     font-family: 'Gen Ei Gothic EB';
     font-weight: bold;
-    src: url('../utils/fonts/GenEiNuGothic-EB.ttf') format('truetype');
+    src: url('../utils/fonts/GenEiNuGothic-EB.woff2') format('woff2');
 }
 
 @font-face {
     font-family: 'Gen shin Gothic';
     font-weight: medium;
-    src: url('../utils/fonts/GenShinGothic-Medium.ttf') format('truetype');
+    src: url('../utils/fonts/GenShinGothic-Medium.woff2') format('woff2');
 }
 @font-face {        
     font-family: 'Gen shin Gothic';
     font-weight: bold;
-    src: url('../utils/fonts/GenShinGothic-Bold.ttf') format('truetype');
+    src: url('../utils/fonts/GenShinGothic-Bold.woff2') format('woff2');
 }
 @font-face {        
     font-family: 'Gen shin Gothic';
     font-weight: 800;
-    src: url('../utils/fonts/GenShinGothic-Heavy.ttf') format('truetype');
+    src: url('../utils/fonts/GenShinGothic-Heavy.woff2') format('woff2');
 }
 @font-face {        
     font-family: 'Gen shin Gothic Monospace';
     font-weight: medium;
-    src: url('../utils/fonts/GenShinGothic-Monospace-Medium.ttf') format('truetype');
+    src: url('../utils/fonts/GenShinGothic-Monospace-Medium.woff2') format('woff2');
 }
 @font-face {
     font-family: 'Gen shin Gothic Monospace';
     font-weight: bold;
-    src: url('../utils/fonts/GenShinGothic-Monospace-Bold.ttf') format('truetype');
+    src: url('../utils/fonts/GenShinGothic-Monospace-Bold.woff2') format('woff2');
 }
 @font-face {
     font-family: 'Gen shin Gothic Monospace';
     font-weight: 800;
-    src: url('../utils/fonts/GenShinGothic-Monospace-Heavy.ttf') format('truetype');
+    src: url('../utils/fonts/GenShinGothic-Monospace-Heavy.woff2') format('woff2');
 }
 
 /* Variables
