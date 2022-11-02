@@ -6,10 +6,17 @@ const NotFoundPage = () => (
     <Layout>
         <div className="container">
             <article className="content" style={{ textAlign: `center` }}>
-                <h1 className="content-title">Error 404</h1>
+                <h1 className="content-title" 
+                    style={{fontSize : "10.0rem",
+                            margin:"0",
+                            color:"#8E8E8E"
+                            }}
+                >
+                404
+                </h1>
                 <section className="content-body">
-                    Page not found, <Link to="/">return home</Link> to start
-                    over
+                <div>ページが見つかりませんでした</div> 
+                <Link to="/" >トップへ戻る</Link>
                 </section>
             </article>
         </div>

@@ -4,7 +4,6 @@
 const path = require(`path`);
 
 const config = require(`./src/utils/siteConfig`);
-const generateRSSFeed = require(`./src/utils/rss/generate-feed`);
 
 let ghostConfig;
 
@@ -72,6 +71,15 @@ module.exports = {
                 name: `images`,
             },
         },
+        {
+            resolve: `gatsby-transformer-rehype`,
+            options: {
+                filter: node => (
+                    node.internal.type === `GhostPost` ||
+                    node.internal.type === `GhostPage`
+                ),
+            },
+        },
         `gatsby-plugin-image`,
         `gatsby-plugin-sharp`,
         `gatsby-transformer-sharp`,
@@ -107,24 +115,6 @@ module.exports = {
                     }
                 }
               `,
-            },
-        },
-        {
-            resolve: `gatsby-plugin-feed`,
-            options: {
-                query: `
-                {
-                    allGhostSettings {
-                        edges {
-                            node {
-                                title
-                                description
-                            }
-                        }
-                    }
-                }
-              `,
-                feeds: [generateRSSFeed(config)],
             },
         },
         {

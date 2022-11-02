@@ -16,6 +16,63 @@ what's here to work the way you'd like it to.
 - Pagination
 - Footer
 
+/* Fonts Load
+/* ---------------------------------------------------------- */
+@font-face {
+    font-family: 'Inter';
+    font-weight: 800;
+    src: url('../utils/fonts/Inter-Black.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-weight: bold;
+    src: url('../utils/fonts/Inter-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-weight: medium;
+    src: url('../utils/fonts/Inter-Medium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Gen Ei Gothic EB';
+    font-weight: bold;
+    src: url('../utils/fonts/GenEiNuGothic-EB.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Gen shin Gothic';
+    font-weight: medium;
+    src: url('../utils/fonts/GenShinGothic-Medium.ttf') format('truetype');
+}
+@font-face {        
+    font-family: 'Gen shin Gothic';
+    font-weight: bold;
+    src: url('../utils/fonts/GenShinGothic-Bold.ttf') format('truetype');
+}
+@font-face {        
+    font-family: 'Gen shin Gothic';
+    font-weight: 800;
+    src: url('../utils/fonts/GenShinGothic-Heavy.ttf') format('truetype');
+}
+@font-face {        
+    font-family: 'Gen shin Gothic Monospace';
+    font-weight: medium;
+    src: url('../utils/fonts/GenShinGothic-Monospace-Medium.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Gen shin Gothic Monospace';
+    font-weight: bold;
+    src: url('../utils/fonts/GenShinGothic-Monospace-Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Gen shin Gothic Monospace';
+    font-weight: 800;
+    src: url('../utils/fonts/GenShinGothic-Monospace-Heavy.ttf') format('truetype');
+}
+
 /* Variables
 /* ---------------------------------------------------------- */
 
@@ -24,14 +81,21 @@ what's here to work the way you'd like it to.
     /* Colours */
     --color-primary: #3eb0ef;
     --color-base: #15171A;
+    --color-gray: #8E8E8E;
+    --color-background-gray: #5b5b5b;
+    --color-filter-gray: #00000079;
+    --color-white-base:#FFFFFF;
     --color-secondary: #5B7A81;
     --color-border: #c7d5d8;
-    --color-bg: #f5f5f5;
+    --color-bg: #F5EFE3;
+    --color-bg-white:#FFFFFF;
+    --color-bg-black:#000000;
 
-    /* Fonts */
-    --font-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+
+    /* Fonts */ 
+    --font-sans-serif: "Inter", "Gen shin Gothic", "Segoe UI", "Helvetica Neue", sans-serif;
     --font-serif: Georgia, Times, serif;
-    --font-mono: Menlo, Courier, monospace;
+    --font-mono: 'Gen shin Gothic Monospace', Menlo, Courier, monospace;
     --font-light: 100;
     --font-normal: 400;
     --font-bold: 700;
@@ -303,14 +367,12 @@ html {
     overflow-y: scroll;
     font-size: 62.5%;
     background: var(--color-base);
-
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 body {
-    overflow-x: hidden;
     color: #3c484e;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-family: "Inter", "Gen shin Gothic", "Segoe UI", "Helvetica Neue", sans-serif;
     font-size: 1.5rem;
     line-height: 1.6em;
     font-weight: 400;
@@ -364,7 +426,7 @@ ul,
 ol,
 dl,
 blockquote {
-    margin: 0 0 1.5em 0;
+    margin: 0 0 1.0em 0;
 }
 
 ol,
@@ -522,37 +584,74 @@ h6 {
     flex-direction: column;
     justify-content: space-between;
     min-height: 100vh;
+    background-color: var(--color-bg);
 }
 
 .container {
-    max-width: 1120px;
+    max-width: 1920px;
     margin: 0 auto;
-    padding: 0 4vw;
+}
+
+.Layout{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
 }
 
 .content {
-    margin: 0 auto;
+    min-height: 100%;
     font-size: 2rem;
     line-height: 1.7em;
+    background-color: var(--color-bg-white);
 }
 
 .content-body {
     display: flex;
     flex-direction: column;
-    font-family: var(--font-serif);
+    font-family: var(--font-sans-serif);
 }
 
 .post-full-content {
-    max-width: 720px;
-    margin: 0 auto;
-    background: #fff;
+    max-width: 1080px;
+    width: 85%;
+    margin: 6vh auto;
 }
 
-.post-feature-image img {
-    margin: 0 0 3vw;
+.post-feature-image{
+    margin: 0 ;
     width: 100%;
-    height: 500px;
+    height: 300px;
+    background-color: var(--color-background-gray);
+}
+
+
+.post-feature-image img {
+    margin: 0 ;
+    width: 100%;
+    height: 300px;
     object-fit: cover;
+}
+
+.post-feature-image::after {
+    content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 300px;
+    background-color: var(--color-filter-gray);
+	background-image: radial-gradient(var(--color-bg-black) 30%, transparent 30%), radial-gradient(var(--color-bg-black) 30%, transparent 30%);
+	background-size: 5px 5px;
+	background-position: 0 0, 2.5px 2.5px;
+}
+
+.post-feature-image-filter{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 300px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .content-body h1,
@@ -568,26 +667,113 @@ h6 {
     margin: 1.0em 0 0.5em 0;
     font-size: 3.4rem;
     font-weight: 700;
+    align-items: center;
+    display: flex;
 }
+
 @media (max-width: 500px) {
     .content-body h1 {
         font-size: 2.8rem;
     }
 }
 
-.content-title {
-    margin: 0 0 0.8em;
-    font-size: 5rem;
+.content-body h1::before{
+    content: "";
+    display: inline-block;
+    height: 3.4rem; 
+    margin-right: 1.2rem; 
+    vertical-align: middle;
+    width: 5px; 
+    background-color: var(--color-bg-black);
 }
+
+.content-body h2::after{
+    content: "";
+    display: block;
+    height: 2px; 
+    width: 100%;
+    background-color: var(--color-bg-black);
+}
+
+.post-title-box{
+    position: absolute;
+    left: 5vw;
+    top: 120px;
+    background-color: var(--color-bg-black);
+    display: inline-flex;
+    padding-right: 4.5rem;
+}
+
+@media (min-width: 1920px) {
+    .post-title-box {
+        left: calc((100% - 1920px)/2 + 5vw);
+    }
+}
+
+#published_at.post-date-box{
+    background-color: var(--color-bg-black);
+    display: inline-flex;
+    padding-right: 3.5rem;
+    margin-right: 2.6rem;
+}
+
+#updated_at.post-date-box {
+    background-color: var(--color-bg-black);
+    display: inline-flex;
+    padding-right: 3.5rem;
+}
+
+.post-date-icon{
+    margin: auto 0;
+    height: 2.0rem;
+    width: 2.0rem;
+    color: var(--color-white-base);
+}
+
+.post-date{
+    font-size: 2.0rem;
+    font-weight: bold;
+    margin-left: 1.2rem;
+    color: var(--color-white-base);
+}
+
+.post-date-container{
+    position: absolute;
+    left: 6vw;
+    top: calc(120px + 5.0rem + 2.6rem);
+}
+
+@media (min-width: 1920px) {
+    .post-date-container {
+        left: calc((100% - 1920px)/2 + 6vw);
+    }
+}
+
+.post-title {
+    font-size: 5.0rem;
+    margin: 0;
+    color: var(--color-white-base);
+    font-family: "Gen Ei GOthic EB";
+}
+
 @media (max-width: 500px) {
-    .content-title {
-        margin: 0.8em 0;
+    .post-title {
         font-size: 3.4rem;
     }
     .content {
         font-size: 1.8rem;
     }
 }
+
+.post-tag-list{
+    display: flex;
+    flex-flow: row wrap;
+    gap: 10px;
+    width: 92.5%;
+    margin: 1.6rem auto 0 auto;
+    font-size: 1.6rem;
+}
+
 
 .content-body h2 {
     margin: 0.8em 0 0.4em 0;
@@ -601,7 +787,7 @@ h6 {
 }
 
 .content-body h3 {
-    margin: 0.5em 0 0.2em 0;
+    margin: 0.5em 1% 0.2em 1%;
     font-size: 2.8rem;
     font-weight: 700;
 }
@@ -658,28 +844,91 @@ h6 {
     border-radius: 12px;
 }
 
+.post-author{
+    margin-bottom: 4vh;
+}
+
+.sidebar{
+    margin-left: 5rem;
+}
+
+.sidebar a:hover{
+    text-decoration: none;
+}
+
+.sidebar-container{
+    padding: 3rem;
+    position: sticky;
+    top: 4vh;
+    background-color: var(--color-bg-white);
+    margin-bottom: 20px;
+}
+
+.post-nav{
+    display: flex;
+    color: var(--color-base);
+    font-weight: bold;
+}
+
+.post-nav:hover{
+    text-decoration: none;
+}
+
+.post-nav-headline{
+    color: var(--color-gray);
+    font-size: 1.2rem;
+}
+
+.post-nav-icon{
+    height: 2.6rem;
+    width: 2.6rem;
+}
+
+.post-nav-icon#previous{
+
+    margin: auto 1.5rem auto 0;
+}
+
+
+.post-nav-icon#next{
+    margin: auto 0 auto 1.5rem;
+}
+
 /* Header
 /* ---------------------------------------------------------- */
 
-.site-head {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    color: #fff;
-    background: var(--color-base);
+.site-head a{
+    color: initial;
+}
+
+.site-head#home {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    color: var(--color-base);
+    background: var(--color-white-base);
     background-position: center;
     background-size: cover;
+}
+
+.site-head#nohome {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: var(--color-white-base);
+    width: 100%;
+    z-index: 999;
 }
 
 .site-nav-item {
     display: inline-block;
     padding: 5px 10px;
-    color: #fff;
-    opacity: 0.7;
+    color: inherit;
 }
 
 .site-nav-item:hover {
     text-decoration: none;
-    opacity: 1;
 }
 
 .site-nav-icon {
@@ -692,41 +941,11 @@ h6 {
 }
 
 .site-mast {
+    margin: 0 4vw;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
-}
-
-.site-mast-right {
-    display: flex;
-    align-items: center;
-}
-
-.site-mast-right .site-nav-item:last-child {
-    padding-right: 0;
-}
-
-.site-banner {
-    max-width: 80%;
-    margin: 0 auto;
-    padding: 10vw 0;
-    text-align: center;
-}
-
-.site-banner-title {
-    margin: 0;
-    padding: 0;
-    color: #fff;
-    font-size: 4rem;
-    line-height: 1.3em;
-}
-
-.site-banner-desc {
-    margin: 5px 0 0 0;
-    padding: 0;
-    font-size: 2.4rem;
-    line-height: 1.3em;
-    opacity: 0.7;
 }
 
 .site-nav {
@@ -734,10 +953,7 @@ h6 {
     align-items: center;
     justify-content: space-between;
     margin: 15px 0 0 0;
-}
-
-.site-nav-left {
-    margin: 0 20px 0 -10px;
+    gap: 10px;
 }
 
 .site-nav-button {
@@ -759,55 +975,187 @@ h6 {
 /* ---------------------------------------------------------- */
 
 .site-main {
-    padding: 4vw 0;
+    padding: 0;
+    margin-left: 5vw;
 }
 
-/* Index
+/* Index (archive Index)
 /* ---------------------------------------------------------- */
 
+.index-header-box{
+    background: linear-gradient(180deg, transparent 70%, var(--color-bg-white) 70%);
+    margin: 8vh 0;
+    padding-right: 5.0rem;
+    display: inline-flex;
+}
+
+.index-header{
+    display: inline;
+    font-size: 4.0rem;
+    margin: 0;
+}
+
 .post-feed {
-    display: grid;
+    display: flex;
     justify-content: space-between;
     grid-gap: 30px;
-    grid-template-columns: 1fr 1fr 1fr;
+    margin-bottom: 4vh;
 }
 
-@media (max-width: 980px) {
-    .post-feed {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-@media (max-width: 680px) {
-    .post-feed {
-        grid-template-columns: 1fr;
-    }
+
+.post-feed#tag {
+    display: flex;
+    justify-content: space-between;
+    grid-gap: 30px;
+    width: 70%;
+    margin: auto;
 }
 
+.post-feed-column{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 50%;
+    flex-grow: 1;
+}
+
+/* Archive Navigation
+/* ---------------------------------------------------------- */
+.archive-header{
+    display: flex;
+    align-items: flex-end;
+    font-family: "Gen Ei Gothic EB";
+    margin: 8vh 0;
+}
+
+.archive-header-box{
+    display: flex;
+    align-items: flex-end;
+    background: linear-gradient(180deg, transparent 70%, var(--color-bg-white) 70%);
+    padding-right: 5.0rem;
+}
+
+.archive-headline{
+    font-size: 4.0rem;
+    margin: 0;
+    margin-right: 2.6rem;
+}
+
+.archive-header-postcounts{
+    font-size: 2.6rem;
+    margin: 0;
+}
+
+.archivenav a{
+    color: var(--color-base);
+}
+
+.archivenav ul {
+    list-style: none;
+  }
+
+.archivenav a:hover{
+    color: var(--color-gray);
+}
+
+.archivenav-headline{
+    margin-bottom: 1.6rem;
+}
+
+.archive-nav{
+    display: flex;
+    flex-direction: column;
+    grid-gap: 20px;
+}
+
+.archive-nav-items{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.archive-nav-content{
+    display: flex;
+    color: var(--color-base);
+}
+
+.archive-nav-content#totop{
+    display: block;
+    text-align: center;
+}
+
+.archive-nav-icon{
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.archive-nav-icon#previous{
+    margin:auto 1.5rem auto 0;
+}
+
+.archive-nav-icon#next{
+    margin:auto 0 auto 1.5rem;
+}
+/* Post Card
+/* ---------------------------------------------------------- */
 .post-card {
     color: inherit;
     text-decoration: none;
+    background-color: var(--color-bg-white);
 }
 
-.post-card:hover {
+.post-card a{
+    color: inherit;
+}
+
+.post-card a:hover {
     text-decoration: none;
 }
 
+
 .post-card-tags {
-    margin: 0 0 5px 0;
+    margin: 1.2rem 0;
     font-size: 1.4rem;
     line-height: 1.15em;
     color: var(--color-secondary);
 }
 
+.post-card-container#header{
+    padding: 3rem 3rem 1rem 3rem;
+}
+
+.post-card-container#footer{
+    padding: 1rem 3rem 3rem 3rem;
+}
+
+.post-card-container h2{
+    margin: 0 0 0.6rem 0;
+}
+
 
 .post-card-title {
-    margin: 0 0 10px 0;
-    padding: 0;
+    font-family: 'Gen Ei Gothic EB', sans-serif;
+    font-size: 2.6rem;
+    font-weight: 800;
 }
 
 .post-card-excerpt {
+    font-weight: medium;
     font-size: 1.6rem;
-    line-height: 1.55em;
+    line-height: 1.75em;
+    max-height: 8.75em;
+    overflow: hidden;
+    position: relative
+}
+
+.post-card-excerpt::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 25rem;
+    height: 3.5rem;
+    background: linear-gradient(to left, var(--color-bg-white),rgba(0,0,0,0));
 }
 
 .post-card-image {
@@ -818,78 +1166,302 @@ h6 {
     background-size: cover;
 }
 
-.post-card-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 10px 0 0 0;
-    color: var(--color-secondary);
+.post-card-publishedat {
+    font-family: "Inter";
+    display: inline;
+    font-size: 2.8rem;
+    color: var(--color-white-base);
+    transform: translate(-0.25rem,0.25rem);
 }
 
-.post-card-footer-left {
-    display: flex;
-    align-items: center;
+.post-card-publishedat-box{
+    background-color: var(--color-bg-black);
+    display: inline-flex;
+    padding-right: 3rem;
 }
 
-.post-card-footer-right {
+.post-card-readingtime{
+    display: flex;
+    color: var(--color-gray);
+    font-weight: medium;
+    font-size: small;
+}
+
+.post-card-clock-icon{
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: auto 5px auto 0;
+    color: var(--color-gray);
+}
+
+.post-card-arrowright-icon{
+    display: block;
+    margin-left: auto;
+    width: 3rem;
+    height: 3rem;
+    color: var(--color-bg-black);
+}
+
+/* Author Card
+/* ---------------------------------------------------------- */
+
+.author-card{
+    padding: 1.6rem;
+    margin: 0 auto;
+    width: 85%;
+    display: grid;
+    grid-template-columns: 90% 10%;
+    border: 8px solid var(--color-bg-black);
+    color: var(--color-base);
+}
+
+.author-card:hover{
+    text-decoration: none;
+}
+
+.author-card a{
+    color: var(--color-base);
+}
+
+.author-card a:hover{
+    text-decoration: none;
+}
+
+.auther-card-image-container{
+    flex: 0 0 auto;
+    margin: 0 4vw 0 0;
+    height: 120px;
+    width: 120px;
+    border-radius: 100%;
+    border: 6px solid var(--color-bg-black);
+    overflow: hidden;
+}
+
+.author-card-content{
+    grid-column: 1/2;
     display: flex;
     flex-direction: column;
 }
 
-.post-card-avatar {
-    width: 30px;
-    height: 30px;
-    margin: 0 7px 0 0;
-    border-radius: 100%;
+.author-card-header{
     display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
-.post-card-avatar .author-profile-image {
+.author-card-namebio{
+    margin: auto 0;
+}
+
+.author-card-name{
+    font-weight: 800;
+}
+
+.author-card-bio{
+    font-weight:medium;
+    grid-column: 2/3;
+}
+
+.author-card-linkslocation{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.author-card-location-item{
+    display: flex;
+    margin: 10px;
+    flex-grow: 1;
+}
+
+.author-card-links-item{
+    display: flex;
+    margin: 10px;
+    flex-grow: 1;
+}
+
+.author-card-links-item:hover{
+    color: var(--color-gray);
+}
+
+.author-card-links-name{
+    font-size: 1.6rem;
+}
+
+.author-card-links-icon {
+    height: 2rem;
+    width: 2rem;
+    margin: auto 5px auto 0;
+}
+
+.author-card-chevronrighticon-container{
+    align-self: center
+}
+
+.author-card-chevronrighticon{
+    height: 6rem;
+    width: 6rem;
+    color: var(--color-base);
+    grid-column: 2/3;
+    margin: auto 0;
+    display: inline-block;
+}
+
+/* Related Post
+/* ---------------------------------------------------------- */
+
+.relate-posts{
+    width: 92.5%;
+    margin: 0 auto 4vh auto;
+}
+
+.relate-posts p{
+    text-align: center;
+}
+
+
+.relate-posts-headline{
+    font-family: 'Gen Ei Gothic EB';
+    color: var(--color-white-base);
+    margin: 0;
+}
+
+.relate-posts-box{
+    background-color: var(--color-bg-black);
+    display: inline-flex;
+    padding-right: 4.5rem;
+}
+
+.related-post-card{
+    margin-top: 1.6rem;
+}
+
+.related-post-card::after{
+    content: "";
     display: block;
+    height: 2px;
     width: 100%;
-    background: var(--color-secondary);
-    border-radius: 100%;
+    background-color: var(--color-bg-black);
+}
+
+.related-post-card-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.related-post-card-title{
+    font-family: 'Gen Ei Gothic EB';
+    margin: 0;
+}
+
+.related-post-card-container:hover{
+    text-decoration: none;
+}
+
+.related-post-card-arrowright-icon{
+    height: 3.4rem;
+    width: 3.4rem;
+    margin: auto 0;
+    color: var(--color-base);
+}
+/* Tag Card
+/* ---------------------------------------------------------- */
+
+.primary-tag-card{
+    display: inline;
+    padding: 0.5rem 1.0rem;
+    background-color: var(--color-bg-black);
+}
+
+.primary-tag-card:hover{
+    text-decoration: none;
+}
+
+.primary-tag-card-name{
+    font-weight: bold;
+    display: inline-block;
+    color: var(--color-bg-white);
+}
+
+.tag-card{
+    padding: calc(0.5rem - 6px) 1.0rem;
+    border: 3px solid var(--color-bg-black);
+}
+
+.tag-card:hover{
+    text-decoration: none;
+}
+
+.tag-card-name{
+    font-weight: bold;
+    display: inline-block;
+    color: var(--color-base);
+}
+
+/* Tag
+/* ---------------------------------------------------------- */
+.tag-header-box{
+    position: absolute;
+    left: 6vw;
+    top: 80px;
+    color: var(--color-white-base);
+    background-color: var(--color-bg-black);
+    display: inline;
+    padding-right: 4.5rem;
+}
+
+@media (min-width: 1920px) {
+    .tag-header-box {
+        left: calc((100% - 1920px)/2 + 6vw);
+    }
+}
+
+.tag-name {
+    font-size: 5.0rem;
+    margin: 0;
+    color: var(--color-white-base);
+    font-family: "Gen Ei GOthic EB";
+    display: flex;
+}
+
+.tag-count{
+    margin-left: 3.6rem;
+    display: flex;
+    font-size: 1.8rem;
+    align-items:flex-end;
+}
+
+.tag-description{
+    margin-top: 1.6rem;
+}
+
+.tag-feature-image{
+    margin: 0 ;
+    width: 100%;
+    height: 300px;
+    background-color: var(--color-background-gray);
+    margin-bottom: 4vh;
+}
+
+
+.tag-feature-image img {
+    margin: 0 ;
+    width: 100%;
+    height: 300px;
     object-fit: cover;
 }
 
-.post-card-avatar .default-avatar {
-    width: 26px;
+.tag-feature-image::after{
+    content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 300px;
+	background-color: var(--color-filter-gray);
+	background-image: radial-gradient(var(--color-bg-black) 30%, transparent 30%), radial-gradient(var(--color-bg-black) 30%, transparent 30%);
+	background-size: 5px 5px;
+	background-position: 0 0, 2.5px 2.5px;
 }
-
-
-/* Tag Archives
-/* ---------------------------------------------------------- */
-
-.tag-header {
-    max-width: 690px;
-    margin: 0 0 4vw;
-}
-
-.tag-header h1 {
-    margin: 0 0 1rem 0;
-}
-
-.tag-header p {
-    margin: 0;
-    color: var(--color-secondary);
-    font-size: 2.2rem;
-    line-height: 1.3em;
-}
-
-@media (max-width: 500px) {
-    .tag-header {
-        border-bottom: var(--color-bg) 1px solid;
-        padding-bottom: 4vw;
-    }
-    .tag-header p {
-        font-size: 1.7rem;
-    }
-}
-
-
-/* Author Archives
+/* Author
 /* ---------------------------------------------------------- */
 
 .author-header {
@@ -994,6 +1566,7 @@ h6 {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin: 0 4vw;
 }
 
 .site-foot-nav a {

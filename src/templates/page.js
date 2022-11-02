@@ -2,15 +2,11 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { Helmet } from "react-helmet";
-
 import { Layout } from "../components/common";
 import { MetaData } from "../components/common/meta";
 
 /**
- * Single page (/:slug)
- *
- * This file renders a single page and loads all the content.
- *
+ * page 
  */
 const Page = ({ data, location }) => {
     const page = data.ghostPage;
@@ -21,7 +17,7 @@ const Page = ({ data, location }) => {
             <Helmet>
                 <style type="text/css">{`${page.codeinjection_styles}`}</style>
             </Helmet>
-            <Layout>
+            <Layout isHome ={true}>
                 <div className="container">
                     <article className="content">
                         <h1 className="content-title">{page.title}</h1>

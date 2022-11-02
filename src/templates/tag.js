@@ -19,16 +19,39 @@ const Tag = ({ data, location, pageContext }) => {
         <>
             <MetaData data={data} location={location} type="series" />
             <Layout>
+                <figure className="tag-feature-image"
+                    style={{
+                        backgroundColor: `${tag.accent_color}`,
+                    }}
+                >
+                    { tag.feature_image && <img
+                        src={tag.feature_image}
+                        alt={tag.title}
+                    />
+                    }
+                </figure>
+                <figure className="tag-header-box">
+                <h1 className="tag-name">
+                    {tag.name}
+                    <div className="tag-count">
+                    &ndash;  {tag.postCount}件
+                    </div>
+                </h1>
+                {tag.description ? <p className="tag-description">{tag.description}</p> : null}
+                </figure>
+              
                 <div className="container">
-                    <header className="tag-header">
-                        <h1>{tag.name}</h1>
-                        {tag.description ? <p>{tag.description}</p> : null}
-                    </header>
-                    <section className="post-feed">
-                        {posts.map(({ node }) => (
-                            // The tag below includes the markup for each post - components/common/PostCard.js
-                            <PostCard key={node.id} post={node} />
-                        ))}
+                <section className="post-feed" id="tag">
+                        <div className="post-feed-column">
+                            {posts.map(({ node }, index ) => ( (index % 2 !== 0) &&
+                                <PostCard  key={node.id} post={node} />
+                            ))}
+                        </div>
+                        <div className="post-feed-column">
+                            {posts.map(({ node }, index ) => ( (index % 2 == 0) &&
+                                <PostCard  key={node.id} post={node} />
+                            ))}
+                        </div>
                     </section>
                     <Pagination pageContext={pageContext} />
                 </div>
@@ -57,6 +80,8 @@ export const pageQuery = graphql`
     query GhostTagQuery($slug: String!, $limit: Int!, $skip: Int!) {
         ghostTag(slug: { eq: $slug }) {
             ...GhostTagFields
+            accent_color
+            postCount
         }
         allGhostPost(
             sort: { order: DESC, fields: [published_at] }

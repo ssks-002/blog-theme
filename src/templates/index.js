@@ -1,34 +1,70 @@
-import * as React from "react";
+import * as React  from "react";
+import {useState} from 'react';
 import PropTypes from "prop-types";
-import { graphql } from "gatsby";
-
-import { Layout, PostCard, Pagination } from "../components/common";
+import { graphql, Link } from "gatsby";
+import { Layout, PostCard, ArchiveNav } from "../components/common";
 import { MetaData } from "../components/common/meta";
+import InfiniteScroll from "react-infinite-scroller";
 
 /**
  * Main index page (home page)
- *
- * Loads all posts from Ghost and uses pagination to navigate through them.
- * The number of posts that should appear per page can be setup
- * in /utils/siteConfig.js under `postsPerPage`.
- *
  */
+
 const Index = ({ data, location, pageContext }) => {
     const posts = data.allGhostPost.edges;
+    const {years, yearMonths, PostCounts} = pageContext
+
+    const itemsPerPage = 4;
+    const [hasMoreItems, sethasMoreItems] = useState(true);
+    const [records, setrecords] = useState(itemsPerPage);
+
+    const loadMore = () => {
+        if (records >= posts.length) {
+          sethasMoreItems(false);
+        } else {
+          setTimeout(() => {
+            setrecords(records + itemsPerPage);
+          }, 500);
+        }
+      };
 
     return (
         <>
+        
             <MetaData location={location} />
             <Layout isHome={true}>
-                <div className="container">
-                    <section className="post-feed">
-                        {posts.map(({ node }) => (
-                            // The tag below includes the markup for each post - components/common/PostCard.js
-                            <PostCard key={node.id} post={node} />
-                        ))}
-                    </section>
-                    <Pagination pageContext={pageContext} />
-                </div>
+                <main className="site-main">
+                    <div className="container">
+                        <div className="index-header-box">
+                            <h2 className="index-header">Archives</h2>
+                        </div>
+                    <div className="Layout">
+                    <InfiniteScroll
+                        loadMore={loadMore}
+                        hasMore={hasMoreItems}
+                        useWindow={true}
+                    >
+                        <section className="post-feed">
+                            <div className="post-feed-column">
+                                {posts.map(({ node }, index ) => ( (index % 2 == 0) &&
+                                    <PostCard  key={node.id} post={node} index={index} />
+                                ))}
+                            </div>
+                            <div className="post-feed-column">
+                                {posts.map(({ node }, index ) => ( (index % 2 !== 0) &&
+                                    <PostCard  key={node.id} post={node} index={index}/>
+                                ))}
+                            </div>
+                        </section>
+                    </InfiniteScroll>
+                    <div className="sidebar">
+                        <div className="sidebar-container" id="1">
+                            <ArchiveNav years={years} yearMonths={yearMonths} PostCounts={PostCounts}/>
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+                </main>
             </Layout>
         </>
     );
@@ -46,14 +82,11 @@ Index.propTypes = {
 
 export default Index;
 
-// This page query loads all posts sorted descending by published date
-// The `limit` and `skip` values are used for pagination
+
 export const pageQuery = graphql`
-    query GhostPostQuery($limit: Int!, $skip: Int!) {
+    query GhostPostQuery{
         allGhostPost(
             sort: { order: DESC, fields: [published_at] }
-            limit: $limit
-            skip: $skip
         ) {
             edges {
                 node {
