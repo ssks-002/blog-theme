@@ -17,7 +17,6 @@ const Post = ({ data, location, pageContext}) => {
     const relateposts = data.relatepost.edges;
     const prevurl = `/post/${prev.slug}`;
     const nexturl = `/post/${next.slug}`;
-    const childHtmlRehype = data.ghostPost.childHtmlRehype;
 
     return (
         <>
@@ -136,10 +135,6 @@ export default Post;
 export const postQuery = graphql`
     query ($slug: String!, $tag: String!) {
         ghostPost(slug: { eq: $slug }) {
-            childHtmlRehype {
-                html
-                tableOfContents
-            }
             tags {
                 accent_color
               }

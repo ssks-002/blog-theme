@@ -71,7 +71,7 @@ module.exports = {
                 name: `images`,
             },
         },
-        {
+        /*{
             resolve: `gatsby-transformer-rehype`,
             options: {
                 filter: node => (
@@ -79,7 +79,7 @@ module.exports = {
                     node.internal.type === `GhostPage`
                 ),
             },
-        },
+        },*/
         `gatsby-plugin-image`,
         `gatsby-plugin-sharp`,
         `gatsby-transformer-sharp`,
