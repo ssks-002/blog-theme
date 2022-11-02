@@ -1,9 +1,6 @@
 [build]
-  command = "NODE_ENV=production gatsby build"
-  publish = "public/"
-
-[template]
-  incoming-hooks = ["Ghost"]
-
-[[plugins]]
-  package = "netlify-plugin-gatsby-cache"
+  base = "public/"
+[build.environment]
+  YARN_VERSION = "1.22.19"
+  YARN_FLAGS = "--no-ignore-optional"
+  NODE_VERSION = "16.17.1"
