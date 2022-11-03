@@ -72,15 +72,17 @@ module.exports = {
                 name: `images`,
             },
         },
-        /*{
+        {
             resolve: `gatsby-transformer-rehype`,
             options: {
                 filter: node => (
                     node.internal.type === `GhostPost` ||
                     node.internal.type === `GhostPage`
+                    
                 ),
+                source: node => node.html,
             },
-        },*/
+        },
         `gatsby-plugin-image`,
         `gatsby-plugin-sharp`,
         `gatsby-transformer-sharp`,

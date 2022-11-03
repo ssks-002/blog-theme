@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import moment from "moment";
 import { graphql, Link } from "gatsby";
 import { Helmet } from "react-helmet";
-import { Layout, PrimaryTagCard, TagCard, RelatedPostCard, AuthorCard } from "../components/common";
+import { Layout, PrimaryTagCard, TagCard, RelatedPostCard, AuthorCard, TableOfContents } from "../components/common";
 import { MetaData } from "../components/common/meta";
 import { CalendarIcon, RefreshIcon, ChevronRightIcon, ChevronLeftIcon } from '@heroicons/react/outline'
 
@@ -15,8 +15,10 @@ const Post = ({ data, location, pageContext}) => {
     const post = data.ghostPost;
     const tags = post.tags;
     const relateposts = data.relatepost.edges;
+    const posturl = `/post/${post.slug}`;
     const prevurl = `/post/${prev.slug}`;
     const nexturl = `/post/${next.slug}`;
+    const toc = post.childHtmlRehype.tableOfContents;
 
     return (
         <>
@@ -58,12 +60,13 @@ const Post = ({ data, location, pageContext}) => {
                                 ))}
                             </div>
                             <section className="post-full-content">
+
                             {/* The main post content */}
                             <section
                                 className="content-body load-external-scripts"
                                 dangerouslySetInnerHTML={{ __html: post.html }}
-                                
                             />
+                            
                             </section>
                             <div className="post-author">
                                 <AuthorCard author={post.primary_author}/>
@@ -75,7 +78,7 @@ const Post = ({ data, location, pageContext}) => {
                                 {relateposts.length ? (
                                 <section>
                                 {relateposts.map(({ node }) => (
-                                    <RelatedPostCard  post={node} />
+                                    <RelatedPostCard  id={node.id} post={node} />
                                 ))}
                                 </section>
                                 ) : (   
@@ -97,8 +100,7 @@ const Post = ({ data, location, pageContext}) => {
                                         </div>
                                     </Link>
                                     }
-                                <div className="toc">
-                                </div>
+                                    <TableOfContents toc={toc} url={posturl}/>
                                     {next &&
                                     <Link to={nexturl} className="post-nav">
                                         <div className="post-nav-content" >
@@ -135,6 +137,10 @@ export default Post;
 export const postQuery = graphql`
     query ($slug: String!, $tag: String!) {
         ghostPost(slug: { eq: $slug }) {
+            childHtmlRehype {
+                html
+                tableOfContents
+            }
             tags {
                 accent_color
               }
