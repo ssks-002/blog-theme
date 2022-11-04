@@ -20,6 +20,42 @@ const Post = ({ data, location, pageContext}) => {
     const nexturl = `/post/${next.slug}`;
     const toc = post.childHtmlRehype.tableOfContents;
 
+    /*const h1 = document.querySelectorAll(".toc-h1");
+
+    const options = {
+        root: null, 
+        rootMargin: "-50% 0px", 
+        threshold: 0 
+      };
+
+    
+    function tochighlight (entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+            activateIndex(entry.target);
+            }
+        });
+    }
+
+    const observer = new IntersectionObserver(tochighlight, options);
+
+    h1.forEach( h1 => {
+        observer.observe(h1);
+    });
+
+    function activateIndex(element) {
+        // すでにアクティブになっている目次を選択
+        const currentActiveIndex = document.querySelector(".toc-h1 .active");
+        // すでにアクティブになっているものが0個の時（=null）以外は、activeクラスを除去
+        if (currentActiveIndex !== null) {
+          currentActiveIndex.classList.remove("active");
+        }
+        // 引数で渡されたDOMが飛び先のaタグを選択し、activeクラスを付与
+        const newActiveIndex = document.querySelector(`a[href='#${element.id}']`);
+        newActiveIndex.classList.add("active");
+      }*/
+
+
     return (
         <>
             <MetaData data={data} location={location} type="article" />

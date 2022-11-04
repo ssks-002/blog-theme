@@ -41,7 +41,7 @@ const Archive = ({ data, location, pageContext }) => {
                                 <h2 className="archive-headline">{currentyear}年{currentmonth}月</h2> :
                                 <h2 className="archive-headline">{currentyear}年</h2>
                             }
-                            <h4 className="archive-header-postcounts">&ndash;  {posts.length}件</h4>
+                            <h4 className="archive-header-postcounts">&ndash;{posts.length}件</h4>
                         </div>
                     </div>
                 <div className="Layout">

@@ -5,7 +5,7 @@ module.exports = {
             ? process.env.SITE_URL || config.siteUrl || `http://blog.ssks-ss.com`
             : `http://localhost:2368`, // Site domain. Do not include a trailing slash!
 
-    postsPerPage: 4, // Number of posts shown on paginated pages (changes this requires sometimes to delete the cache)
+    postsPerPage: 2, // Number of posts shows initially and also will add on every scroll 
 
     siteTitleMeta: `*新機能搭載`, // This allows an alternative site title for meta data for pages.
     siteDescriptionMeta: `新機能を搭載しています`, // This allows an alternative site description for meta data for pages.
