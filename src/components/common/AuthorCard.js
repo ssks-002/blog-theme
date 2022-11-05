@@ -19,18 +19,15 @@ const AuthorCard = ({ author }) => {
 
             <div className="author-card-content">
                 <div className="author-card-header">
-                    <Link to={url} div className="auther-card-image-container">
+                    <Link to={url} className="author-card-image-container">
                         {author.profile_image ? (
                             <img
                                 className="author-card-image"
-                                src={author.profile_image}
-                                alt={author.name}
-                            />
+                                src={author.profile_image} />
                         ) : (
                             <img
                                 className="default-author-card-image"
                                 src="/images/icons/avatar.svg"
-                                alt={author.name}
                             />
                         )}
                     </Link>

@@ -1,6 +1,4 @@
 const path = require(`path`);
-const { postsPerPage } = require(`./src/utils/siteConfig`);
-const { paginate } = require(`gatsby-awesome-pagination`);
 
 exports.createPages = async ({ graphql, actions }) => {
     const { createPage } = actions;
@@ -92,38 +90,20 @@ exports.createPages = async ({ graphql, actions }) => {
 
     // Create tag pages
     tags.forEach(({ node }) => {
-        const totalPosts = node.postCount !== null ? node.postCount : 0;
-        const url = `/tag/${node.slug}`;
-        const items = Array.from({ length: totalPosts });
-
-        // Create pagination
-        paginate({
-            createPage,
-            items: items,
-            itemsPerPage: postsPerPage,
+        createPage({
+            path: `/tag/${node.slug}`,
             component: tagsTemplate,
-            pathPrefix: ({ pageNumber }) =>
-                pageNumber === 0 ? url : `${url}/page`,
             context: {
                 slug: node.slug,
-            },
-        });
+            }
+          });
     });
 
     // Create author pages
     authors.forEach(({ node }) => {
-        const totalPosts = node.postCount !== null ? node.postCount : 0;
-        const url = `/author/${node.slug}`;
-        const items = Array.from({ length: totalPosts });
-
-        // Create pagination
-        paginate({
-            createPage,
-            items: items,
-            itemsPerPage: postsPerPage,
+        createPage({
+            path:  `/author/${node.slug}`,
             component: authorTemplate,
-            pathPrefix: ({ pageNumber }) =>
-                pageNumber === 0 ? url : `${url}/page`,
             context: {
                 slug: node.slug,
             },
@@ -132,12 +112,10 @@ exports.createPages = async ({ graphql, actions }) => {
 
     // Create pages
     pages.forEach(({ node }) => {
-        node.url = `/${node.slug}/`;
         createPage({
-            path: node.url,
+            path:  `/${node.slug}/`,
             component: pageTemplate,
             context: {
-                // GraphQL variables
                 slug: node.slug,
             },
         });
@@ -145,7 +123,6 @@ exports.createPages = async ({ graphql, actions }) => {
 
     // Create post pages
     posts.forEach(({ node }, index) => {
-        node.url = `/post/${node.slug}`;
 
         let tag;
 
@@ -160,10 +137,9 @@ exports.createPages = async ({ graphql, actions }) => {
         const next = index === posts.length - 1 ? false : posts[index + 1].node
 
         createPage({
-            path: node.url,
+            path: `/post/${node.slug}`,
             component: postTemplate,
             context: {
-                // GraphQL variables
                 slug: node.slug,
                 tag,
                 prev,
@@ -172,85 +148,69 @@ exports.createPages = async ({ graphql, actions }) => {
         })
     });
 
-    /* Create pagination
-        paginate({
-            createPage,
-            items: posts,
-            itemsPerPage: postsPerPage,
-            component: indexTemplate,
-            pathPrefix: ({ pageNumber }) => {
-                if (pageNumber === 0) {
-                    return `/`;
-                } else {
-                    return `/page`;
-                }
-            },
-        });*/
+    // Create archive 
+    yearArray.forEach((year, index) => {
 
+        const prevyear = index === 0 ? false : yearArray[index - 1]
+        const nextyear = index ===  yearArray.length - 1 ? false : yearArray[index + 1]
 
-        // Create archive 
-        yearArray.forEach((year, index) => {
-
-            const prevyear = index === 0 ? false : yearArray[index - 1]
-            const nextyear = index ===  yearArray.length - 1 ? false : yearArray[index + 1]
-
-            createPage({
-              path: `/archive/${year}/`,
-              component: archiveTemplate,
-              context: {
-                years: yearArray,
-                yearMonths: yearMonthArray,
-                currentyear: year,
-                nextyear:nextyear,
-                prevyear:prevyear,
-                periodStartDate: `${year}-01-01T00:00:00.000Z`,
-                periodEndDate: `${year}-12-31T23:59:59.999Z`,
-                PostCounts: PostCounts,
-              }
-            });
-          });
-
-        yearMonthArray.forEach((yearMonth, index) => {
-            const [year, month] = yearMonth.split('/')
-            const startDate = `${year}-${month}-01T00:00:00.000Z`;
-            const newStartDate = new Date(startDate);
-
-            const endDate = new Date(
-              new Date(newStartDate.setMonth(newStartDate.getMonth() + 1)).getTime() -
-                1
-            ).toISOString();
-
-            const prevyearmonth = index === 0 ? false : yearMonthArray[index - 1]
-            const nextyearmonth = index === yearMonthArray.length - 1 ? false : yearMonthArray[index + 1]
-          
-            createPage({
-              path: `/archive/${year}/${month}/`,
-              component: archiveTemplate,
-              context: {
-                years: yearArray,
-                yearMonths: yearMonthArray,
-                currentyear: year,
-                currentmonth: month,
-                prevyearmonth: prevyearmonth,
-                nextyearmonth: nextyearmonth,
-                periodStartDate: startDate,
-                periodEndDate: endDate,
-                PostCounts: PostCounts,
-              }
-            });
-          });
-
-        // Create index
         createPage({
-            path: `/`,
-            component: indexTemplate,
+            path: `/archive/${year}/`,
+            component: archiveTemplate,
             context: {
-                itemsPerPage: postsPerPage,
-                years: yearArray,
-                yearMonths: yearMonthArray,
-                PostCounts: PostCounts,
-            },
+            years: yearArray,
+            yearMonths: yearMonthArray,
+            currentyear: year,
+            nextyear:nextyear,
+            prevyear:prevyear,
+            periodStartDate: `${year}-01-01T00:00:00.000Z`,
+            periodEndDate: `${year}-12-31T23:59:59.999Z`,
+            PostCounts: PostCounts,
+            }
         });
+        });
+
+    yearMonthArray.forEach((yearMonth, index) => {
+        //set existing year year/month, and also do the around
+        const [year, month] = yearMonth.split('/')
+        const startDate = `${year}-${month}-01T00:00:00.000Z`;
+        const newStartDate = new Date(startDate);
+
+        const endDate = new Date(
+            new Date(newStartDate.setMonth(newStartDate.getMonth() + 1)).getTime() -
+            1
+        ).toISOString();
+
+        const prevyearmonth = index === 0 ? false : yearMonthArray[index - 1]
+        const nextyearmonth = index === yearMonthArray.length - 1 ? false : yearMonthArray[index + 1]
+        
+        createPage({
+            path: `/archive/${year}/${month}/`,
+            component: archiveTemplate,
+            context: {
+            years: yearArray,
+            yearMonths: yearMonthArray,
+            currentyear: year,
+            currentmonth: month,
+            prevyearmonth: prevyearmonth,
+            nextyearmonth: nextyearmonth,
+            periodStartDate: startDate,
+            periodEndDate: endDate,
+            PostCounts: PostCounts,
+            }
+        });
+        });
+
+    // Create index
+    createPage({
+        path: `/`,
+        component: indexTemplate,
+        context: {
+            years: yearArray,
+            yearMonths: yearMonthArray,
+            PostCounts: PostCounts,
+        },
+    });
 };
 
 exports.onCreateWebpackConfig = ({ stage, actions }) => {

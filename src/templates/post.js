@@ -63,16 +63,14 @@ const Post = ({ data, location, pageContext}) => {
                 <style type="text/css">{`${post.codeinjection_styles}`}</style>
             </Helmet>
             <Layout>
+            <main className="site-main">
                 <figure className="post-feature-image">
-                    {post.feature_image &&  <img
-                        src={post.feature_image}
-                        alt={post.title}
-                    />
+                    {post.feature_image &&  
+                    <img src={post.feature_image}/>
                     }
                 </figure>
-                    <figure className="post-title-box">
+                <div className="container">
                     <h1 className="post-title">{post.title}</h1>
-                    </figure>
                     <div className="post-date-container">
                         <figure className="post-date-box" id ="published_at">
                         <CalendarIcon className="post-date-icon" id ="calender-icon"/>
@@ -85,8 +83,6 @@ const Post = ({ data, location, pageContext}) => {
                         </figure>
                         }
                     </div>
-                    <main className="site-main">
-                    <div className="container">
                     <div className="Layout">
                         <article className="content">
                             <div className="post-tag-list">
@@ -108,9 +104,7 @@ const Post = ({ data, location, pageContext}) => {
                                 <AuthorCard author={post.primary_author}/>
                             </div>
                             <div className="relate-posts">
-                                <div className="relate-posts-box">
-                                    <h1 className="relate-posts-headline">関連記事</h1>
-                                </div>
+                                <h1 className="relate-posts-headline">関連記事</h1>
                                 {relateposts.length ? (
                                 <section>
                                 {relateposts.map(({ node }) => (

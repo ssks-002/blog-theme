@@ -81,6 +81,11 @@ module.exports = {
                     
                 ),
                 source: node => node.html,
+                plugins:[
+                    {
+                    resolve: `gatsby-rehype-ghost-links`,
+                  },
+                ]
             },
         },
         `gatsby-plugin-image`,
