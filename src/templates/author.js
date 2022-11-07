@@ -23,7 +23,7 @@ import { TwitterIcon, FacebookIcon } from "../../static/images/icons";
     return (
         <>
             <MetaData data={data} location={location} type="profile" />
-            <Layout isHome={true}>
+            <Layout>
             <main className="site-main">
             <div className="author-cover-image">
                 {author.cover_image && (
@@ -85,7 +85,6 @@ import { TwitterIcon, FacebookIcon } from "../../static/images/icons";
                                 </a>
                             )}
                         </div>
-                   
                 </div>
                 <div className="author-image-container">
                     {author.profile_image ? (

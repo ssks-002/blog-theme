@@ -12,45 +12,45 @@ import { CalendarIcon, RefreshIcon, ChevronRightIcon, ChevronLeftIcon } from '@h
  * post page
  */
 const Post = ({ data, location, pageContext}) => {
-    const { prev, next } = pageContext;
-    const post = data.ghostPost;
-    const tags = post.tags;
-    const relateposts = data.relatepost.edges;
-    const prevurl = `/post/${prev.slug}`;
-    const nexturl = `/post/${next.slug}`;
-    const toc = post.childHtmlRehype.tableOfContents;
-    const scrolloptions = {
-        root: null, 
-        rootMargin: "0% 0px -80% 0px",
-        threshold: 0 
+const { prev, next } = pageContext;
+const post = data.ghostPost;
+const tags = post.tags;
+const relateposts = data.relatepost.edges;
+const prevurl = `/post/${prev.slug}`;
+const nexturl = `/post/${next.slug}`;
+const toc = post.childHtmlRehype.tableOfContents;
+const scrolloptions = {
+    root: null, 
+    rootMargin: "0% 0px -80% 0px",
+    threshold: 0.5 
+};
+
+useEffect(() => {
+    const targetheadingh1  =  Array.from(document.querySelectorAll(".content-body > h1"));
+    const targetheadingh2  =  Array.from(document.querySelectorAll(".content-body > h2"));
+    const targetheadingh3  =  Array.from(document.querySelectorAll(".content-body > h3"));
+
+    const targetheading = targetheadingh1.concat(targetheadingh2, targetheadingh3)
+
+    const tochighlight = (entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const currentActive = document.querySelector(".toc-item.active");
+                if (currentActive) {
+                    currentActive.classList.remove("active");
+                }
+                const newActive = document.querySelector(`a[href="#${entry.target.id}"]`);
+                newActive.classList.add("active");
+            }
+        })
     };
 
-    useEffect(() => {
-        const targetheadingh1  =  Array.from(document.querySelectorAll(".content-body > h1"));
-        const targetheadingh2  =  Array.from(document.querySelectorAll(".content-body > h2"));
-        const targetheadingh3  =  Array.from(document.querySelectorAll(".content-body > h3"));
-
-        const targetheading = targetheadingh1.concat(targetheadingh2, targetheadingh3)
-
-        const tochighlight = (entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const currentActive = document.querySelector(".toc-item.active");
-                    if (currentActive) {
-                        currentActive.classList.remove("active");
-                    }
-                    const newActive = document.querySelector(`a[href="#${entry.target.id}"]`);
-                    newActive.classList.add("active");
-                }
-            })
-        };
-
-        const observer = new IntersectionObserver(tochighlight, scrolloptions)
-        
-        targetheading.forEach( target => {
-            observer.observe(target);
-        })
-    },[])
+    const observer = new IntersectionObserver(tochighlight, scrolloptions)
+    
+    targetheading.forEach( target => {
+        observer.observe(target);
+    })
+},[])
 
     return (
         <>
@@ -117,6 +117,7 @@ const Post = ({ data, location, pageContext}) => {
                         </article>
                         <div className="sidebar">
                             <div className="sidebar-container">
+                                <div className="sidebar-box">
                                     {prev &&
                                     <Link to={prevurl} className="post-nav"> 
                                         <ChevronLeftIcon className="post-nav-icon" id="previous"/>
@@ -136,6 +137,7 @@ const Post = ({ data, location, pageContext}) => {
                                         <ChevronRightIcon className="post-nav-icon" id="next"/>
                                     </Link>
                                     }
+                            </div>
                             </div>
                         </div>
                     </div>

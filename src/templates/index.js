@@ -25,7 +25,9 @@ return (
                         <InfiniteScroll posts={posts} isHome={true}></InfiniteScroll>
                         <div className="sidebar">
                             <div className="sidebar-container" id="1">
+                                <div className="sidebar-box">
                                 <ArchiveNav years={years} yearMonths={yearMonths} PostCounts={PostCounts}/>
+                                </div>
                             </div>
                         </div>
                     </div>

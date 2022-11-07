@@ -117,6 +117,9 @@ exports.createPages = async ({ graphql, actions }) => {
             component: pageTemplate,
             context: {
                 slug: node.slug,
+                years: yearArray,
+                yearMonths: yearMonthArray,
+                PostCounts: PostCounts,
             },
         });
     });

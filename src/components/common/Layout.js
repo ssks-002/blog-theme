@@ -62,7 +62,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                 {/* The footer at the very bottom of the screen */}
                 <footer className="site-foot">
                     <div className="site-foot-nav container">
-                        <div className="site-foot-nav-left">
+                        <div className="site-foot-nav-right">
                             <Link to="/">{site.title}</Link> © 2022 
                         </div>
                     </div>

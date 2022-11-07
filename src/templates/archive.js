@@ -32,6 +32,7 @@ const Archive = ({ data, location, pageContext }) => {
                     <InfiniteScroll posts={posts} isHome={true}/>
                     <div className="sidebar">
                         <div className="sidebar-container">
+                            <div className="sidebar-box">
                             <div className="archive-nav">
                             <Link to={`/`} className="archive-nav-content" id="totop" >トップに戻る</Link>
                                 <div className="archive-nav-items">
@@ -72,6 +73,7 @@ const Archive = ({ data, location, pageContext }) => {
                                 </div>
                             </div>
                             <ArchiveNav years={years} yearMonths={yearMonths} PostCounts={PostCounts}/>
+                        </div>
                         </div>
                     </div>
                 </div>

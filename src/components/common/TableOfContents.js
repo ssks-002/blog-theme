@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from "react";
 /*require toc-node generate by gatsby-transformer-rehype */
 
-const TableOfContents = ({ toc, url }) => {
+const TableOfContents = ({ toc }) => {
 
   return (
     <div className="toc">
@@ -33,7 +33,6 @@ const TableOfContents = ({ toc, url }) => {
 
 TableOfContents.propTypes = {
   toc: PropTypes.any.isRequired,
-  url: PropTypes.string.isRequired,
 };
 
 

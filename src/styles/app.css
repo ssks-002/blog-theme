@@ -713,7 +713,7 @@ h6 {
     top: 120px;
     background-color: var(--color-bg-black);
     display: inline-block;
-    padding-right: 4.5rem;
+    padding-right: 2.4em;
     font-size: 5.0rem;
     margin: 0;
     color: var(--color-white-base);
@@ -732,14 +732,14 @@ h6 {
 #published_at.post-date-box{
     background-color: var(--color-bg-black);
     display: inline-flex;
-    padding-right: 3.5rem;
+    padding-right: 3.6em;
     margin-right: 2.6rem;
 }
 
 #updated_at.post-date-box {
     background-color: var(--color-bg-black);
     display: inline-flex;
-    padding-right: 3.5rem;
+    padding-right: 3.6em;
 }
 
 .post-date-icon{
@@ -891,11 +891,14 @@ h6 {
 }
 
 .sidebar-container{
-    padding: 3rem;
     position: sticky;
     top: 4vh;
+}
+
+.sidebar-box{
     background-color: var(--color-bg-white);
-    margin-bottom: 20px;
+    padding: 2em ;
+    margin-bottom: 4vh;
 }
 
 .sidebar h1{
@@ -911,6 +914,7 @@ h6 {
 
 .toc{
     margin: 1.8rem 0;
+
 }
 
 .toc a{
@@ -923,6 +927,7 @@ h6 {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
+    z-index: 0;
 }
 
 .toc-item.h1{
@@ -1092,7 +1097,7 @@ h6 {
 .index-header-box{
     background: linear-gradient(180deg, transparent 70%, var(--color-bg-white) 70%);
     margin: 8vh 0;
-    padding-right: 5.0rem;
+    padding-right: 5.0em;
     display: inline-flex;
 }
 
@@ -1167,7 +1172,7 @@ h6 {
     display: flex;
     align-items: flex-end;
     background: linear-gradient(180deg, transparent 70%, var(--color-bg-white) 70%);
-    padding-right: 5.0rem;
+    padding-right: 4.8em;
 }
 
 .archive-headline{
@@ -1195,6 +1200,7 @@ h6 {
 
 .archivenav-headline{
     margin-bottom: 1.6rem;
+    font-weight: bold;
 }
 
 .archive-nav{
@@ -1298,7 +1304,7 @@ h6 {
     bottom: 0;
     width: 25rem;
     height: 3.5rem;
-    background: linear-gradient(to left, var(--color-bg-white),rgba(0,0,0,0));
+    background: linear-gradient(to left, var(--color-bg-white),transparent);
 }
 
 .post-card-publishedat {
@@ -1312,7 +1318,7 @@ h6 {
 .post-card-publishedat-box{
     background-color: var(--color-bg-black);
     display: inline-flex;
-    padding-right: 3rem;
+    padding-right: 3em;
 }
 
 .post-card-readingtime{
@@ -1463,7 +1469,7 @@ h6 {
     color: var(--color-white-base);
     margin: 0;
     background-color: var(--color-bg-black);
-    padding-right: 4.5rem;
+    padding-right: 4.8em;
 }
 
 
@@ -1538,11 +1544,11 @@ h6 {
 .tag-header-box{
     position: absolute;
     left: auto;
-    top: 80px;
+    top: 120px;
     color: var(--color-white-base);
     background-color: var(--color-bg-black);
     display: inline;
-    padding-right: 4.5rem;
+    padding-right: 4.8em;
 }
 
 .tag-name {
@@ -1611,14 +1617,14 @@ h6 {
     position: relative;
     margin: 0 ;
     width: 100%;
-    height: 300px;
+    height: 400px;
     background-color: var(--color-background-gray);
 }
 
 .author-cover-image img {
     margin: 0 ;
     width: 100%;
-    height: 300px;
+    height: 400px;
     object-fit: cover;
 }
 
@@ -1634,7 +1640,7 @@ h6 {
 
 .author-image-container{
     position: absolute;
-    top: 240px;
+    top: 340px;
     left: calc(50% - 60px);
     height: 120px;
     width: 120px;
@@ -1647,9 +1653,9 @@ h6 {
     background-color: var(--color-bg-black);
     color: var(--color-white-base);
     position: absolute;
-    top: 60px;
+    top: 120px;
     left: auto;
-    padding: 0 7.2rem 0 3.6rem;
+    padding-right: 4.8em;
 }
 
 .author-content-box h1{
@@ -1665,12 +1671,10 @@ h6 {
 }
 
 .author-linkslocation{
-    background-color: var(--color-bg-black);
     color: var(--color-white-base);
     position: absolute;
-    top: calc(60px + 10.5rem + 1.5em );
+    top: calc(120px + 10.5rem + 1.5em );
     left: auto;
-    padding: 0 7.2rem 0 3.6rem;
     display: flex;
     gap: 20px;
 }
@@ -1684,10 +1688,14 @@ h6 {
 }
 
 .author-location-item{
+    padding-right: 3.6em;
+    background-color: var(--color-bg-black);
     display: flex;
 }
 
 .author-link-item{
+    padding-right: 3.6em;
+    background-color: var(--color-bg-black);
     display: flex;
 }
 
@@ -1770,6 +1778,10 @@ h6 {
 .site-foot-nav a:hover {
     text-decoration: none;
     color: rgba(255,255,255,1);
+}
+
+.site-foot-nav-right{
+    margin-left: auto;
 }
 
 .site-foot-nav-right a {
