@@ -4,7 +4,7 @@ import { postsPerPage } from "../../utils/siteConfig";
 import { PostCard } from "/";
 import { ChevronDoubleDownIcon } from '@heroicons/react/outline'
 
-const InfiniteScroll = ({ posts, isHome }) => {
+const InfiniteScroll = ({ posts, location }) => {
     
     const [list, setList] = useState([...posts.slice(0, postsPerPage)])
     const [loadMore, setLoadMore] = useState(false);
@@ -25,13 +25,15 @@ const InfiniteScroll = ({ posts, isHome }) => {
         setLoadMore(true)
     }
 
-    const handleObserver = (entities) => {
-        const target = entities[0]
+    //this will be assigned entries to loadRef.current
+    const handleObserver = (entries) => {
+        const target = entries[0]
         if (target.isIntersecting) {
             setLoadMore(true)
         }
     }
 
+    //preventing from loading when button exist, scroll infinately when button donot exist (create observe instance and ovserving)
     useEffect(() => {
         const observer = new IntersectionObserver(handleObserver, scrolloptions)
         if (loadRef.current) {
@@ -39,6 +41,7 @@ const InfiniteScroll = ({ posts, isHome }) => {
         }
     }, [loadRef.current])
 
+    //add to post-feed more posts when hasmore is true. however, regardlss of hasmore's state, list will upadte and loadmore is reset (set false)
     useEffect(() => {
     if (loadMore && hasMore) {
         const currentLength = list.length
@@ -49,15 +52,16 @@ const InfiniteScroll = ({ posts, isHome }) => {
         setList([...list, ...nextResults])
         setLoadMore(false)
         }
-    }, [loadMore, hasMore]) 
+    }, [loadMore]) 
 
+    // to indicate message when ismore is false (no more posts)
     useEffect(() => {
         const isMore = list.length < posts.length
         setHasMore(isMore)
     }, [list]) 
 
     return(
-        <section className="post-feed" id={isHome ? "" : "center"}>
+        <section className="post-feed" id={location ?  location : ""}>
             <div className="post-feed-container">
                 <div className="post-feed-column">
                     {list.map(({ node }, index ) => ( (index % 2 == 0) &&
@@ -91,6 +95,7 @@ const InfiniteScroll = ({ posts, isHome }) => {
 
 InfiniteScroll.propTypes = {
   posts: PropTypes.array.isRequired,
+  location: PropTypes.string,
 };
 
 

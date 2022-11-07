@@ -37,10 +37,8 @@ const Tag = ({ data, location }) => {
                     </h1>
                     {tag.description ? <p className="tag-description">{tag.description}</p> : null}
                     </figure>
-                        <div className="Layout" id="tag">                  
-                            <InfiniteScroll posts={posts}/>
-                        </div>
                     </div>
+                    <InfiniteScroll posts={posts} location="tag"/>
                 </main>
             </Layout>
         </>

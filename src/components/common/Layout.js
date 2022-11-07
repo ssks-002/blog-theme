@@ -29,8 +29,8 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                 <header className="site-head" id={isHome ? "home" : "nohome"}>
                     <div className="container">
                     <div className="site-mast">
-                            <div className="site-mast-left">
-                                <Link to="/">
+                            <Link to="/" className="site-mast-left">
+                                <div>
                                     {site.logo ? (
                                         <img
                                             className="site-logo"
@@ -39,9 +39,12 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                         />
                                     ) : (
                                         <GatsbyImage image={data.file.childImageSharp.gatsbyImageData} alt={site.title} />
-                                    )}{site.title}
-                                </Link>
-                            </div>
+                                    )}
+                                </div>
+                                <div>
+                                    {site.title}
+                                </div>
+                            </Link>
                             <nav className="site-nav">
                                 <Navigation
                                         data={site.navigation}

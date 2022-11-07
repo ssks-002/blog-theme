@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useEffect } from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 import { graphql, Link } from "gatsby";
@@ -15,46 +16,41 @@ const Post = ({ data, location, pageContext}) => {
     const post = data.ghostPost;
     const tags = post.tags;
     const relateposts = data.relatepost.edges;
-    const posturl = `/post/${post.slug}`;
     const prevurl = `/post/${prev.slug}`;
     const nexturl = `/post/${next.slug}`;
     const toc = post.childHtmlRehype.tableOfContents;
-
-    /*const h1 = document.querySelectorAll(".toc-h1");
-
-    const options = {
+    const scrolloptions = {
         root: null, 
-        rootMargin: "-50% 0px", 
+        rootMargin: "0% 0px -80% 0px",
         threshold: 0 
-      };
+    };
 
-    
-    function tochighlight (entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-            activateIndex(entry.target);
-            }
-        });
-    }
+    useEffect(() => {
+        const targetheadingh1  =  Array.from(document.querySelectorAll(".content-body > h1"));
+        const targetheadingh2  =  Array.from(document.querySelectorAll(".content-body > h2"));
+        const targetheadingh3  =  Array.from(document.querySelectorAll(".content-body > h3"));
 
-    const observer = new IntersectionObserver(tochighlight, options);
+        const targetheading = targetheadingh1.concat(targetheadingh2, targetheadingh3)
 
-    h1.forEach( h1 => {
-        observer.observe(h1);
-    });
+        const tochighlight = (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const currentActive = document.querySelector(".toc-item.active");
+                    if (currentActive) {
+                        currentActive.classList.remove("active");
+                    }
+                    const newActive = document.querySelector(`a[href="#${entry.target.id}"]`);
+                    newActive.classList.add("active");
+                }
+            })
+        };
 
-    function activateIndex(element) {
-        // すでにアクティブになっている目次を選択
-        const currentActiveIndex = document.querySelector(".toc-h1 .active");
-        // すでにアクティブになっているものが0個の時（=null）以外は、activeクラスを除去
-        if (currentActiveIndex !== null) {
-          currentActiveIndex.classList.remove("active");
-        }
-        // 引数で渡されたDOMが飛び先のaタグを選択し、activeクラスを付与
-        const newActiveIndex = document.querySelector(`a[href='#${element.id}']`);
-        newActiveIndex.classList.add("active");
-      }*/
-
+        const observer = new IntersectionObserver(tochighlight, scrolloptions)
+        
+        targetheading.forEach( target => {
+            observer.observe(target);
+        })
+    },[])
 
     return (
         <>
@@ -70,7 +66,7 @@ const Post = ({ data, location, pageContext}) => {
                     }
                 </figure>
                 <div className="container">
-                    <h1 className="post-title">{post.title}</h1>
+                    <h1 className="post-title">{post.title} </h1>
                     <div className="post-date-container">
                         <figure className="post-date-box" id ="published_at">
                         <CalendarIcon className="post-date-icon" id ="calender-icon"/>
@@ -130,7 +126,7 @@ const Post = ({ data, location, pageContext}) => {
                                         </div>
                                     </Link>
                                     }
-                                    <TableOfContents toc={toc} url={posturl}/>
+                                    <TableOfContents toc={toc} />
                                     {next &&
                                     <Link to={nexturl} className="post-nav">
                                         <div className="post-nav-content" >

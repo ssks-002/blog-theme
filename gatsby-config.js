@@ -81,12 +81,15 @@ module.exports = {
                     
                 ),
                 source: node => node.html,
-                plugins:[
-                    {
-                    resolve: `gatsby-rehype-ghost-links`,
-                  },
-                ]
             },
+        },
+        {
+            resolve: 'gatsby-plugin-react-svg',
+            options: {
+              rule: {
+                include: `/icons/`
+              }
+            }
         },
         `gatsby-plugin-image`,
         `gatsby-plugin-sharp`,

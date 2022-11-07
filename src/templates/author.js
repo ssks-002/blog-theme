@@ -3,13 +3,14 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { Layout, InfiniteScroll } from "../components/common";
 import { MetaData } from "../components/common/meta";
-import { LinkIcon, LocationMarkerIcon, ChevronRightIcon } from '@heroicons/react/outline'
+import { LinkIcon, LocationMarkerIcon } from '@heroicons/react/outline';
+import { TwitterIcon, FacebookIcon } from "../../static/images/icons";
 
 /**
  * Author page 
  */
 
-    const Author = ({ data, location, pageContext }) => {
+    const Author = ({ data, location }) => {
     const author = data.ghostAuthor;
     const posts = data.allGhostPost.edges;
     const twitterUrl = author.twitter
@@ -30,57 +31,78 @@ import { LinkIcon, LocationMarkerIcon, ChevronRightIcon } from '@heroicons/react
                 )}
             </div>
             <div className="container">
-                <div className="author-content">
-                    <div className="auther-image-container">
-                        {author.profile_image ? (
-                            <img
-                                className="author-image"
-                                src={author.profile_image}
-                            />
-                        ) : (
-                            <img
-                                className="default-author-image"
-                                src="/images/icons/avatar.svg"
-                            />
-                        )}
+                    <div className="author-content-box">
+                    <h1 className="author-name">{author.name}</h1>
+                    {author.bio && <p className="author-bio">{author.bio}</p>}
                     </div>
-                    <h1>{author.name}</h1>
-                    {author.bio && <p>{author.bio}</p>}
-                    <div className="author-meta">
-                        {author.website && (
-                            <a
-                                className="author-link-item"
-                                href={author.website}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                Website
-                            </a>
-                        )}
-                        {twitterUrl && (
-                            <a
-                                className="author-link-item"
-                                href={twitterUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                Twitter
-                            </a>
-                        )}
-                        {facebookUrl && (
-                            <a
-                                className="author-link-item"
-                                href={facebookUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                Facebook
-                            </a>
-                        )}
-                    </div>
+                    <div  className="author-linkslocation">
+                        <div className="author-location-item">
+                            <LocationMarkerIcon className="author-link-icon"/>
+                            <div className="author-link-name">
+                                {author.location && (author.location)}
+                            </div> 
+                        </div>
+                            {twitterUrl && (
+                                <a
+                                    className="author-link-item"
+                                    id="twitter"
+                                    href={twitterUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                <TwitterIcon className="author-link-icon"/>
+                                <div className="author-link-name">
+                                    {author.twitter}
+                                </div>  
+                                </a>
+                            )}
+                            {facebookUrl && (
+                                <a
+                                    className="author-link-item"
+                                    id="facebook"
+                                    href={facebookUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                <FacebookIcon className="author-link-icon"/>
+                                <div className="author-link-name">
+                                    {author.facebook}
+                                </div> 
+                                </a>
+                            )}
+                            {author.website && (
+                                <a
+                                    className="author-link-item" 
+                                    id="website"
+                                    href={author.website}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                <LinkIcon className="author-link-icon" id ="Website"/>
+                                <div className="author-link-name">
+                                    {author.website}
+                                </div>
+                                </a>
+                            )}
+                        </div>
+                   
                 </div>
-                    <InfiniteScroll posts={posts}/>
+                <div className="author-image-container">
+                    {author.profile_image ? (
+                        <img
+                            className="author-image"
+                            src={author.profile_image}
+                        />
+                    ) : (
+                        <img
+                            className="default-author-image"
+                            src="/images/icons/avatar.svg"
+                        />
+                    )}
                 </div>
+              
+                
+                    <InfiniteScroll posts={posts} location="author"/>
                 </main>
             </Layout>
         </>

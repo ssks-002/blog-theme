@@ -2,6 +2,7 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
 import { LinkIcon, LocationMarkerIcon, ChevronRightIcon } from '@heroicons/react/outline'
+import { FacebookIcon, TwitterIcon } from "../../../static/images/icons";
 
 
 const AuthorCard = ({ author }) => {
@@ -40,25 +41,21 @@ const AuthorCard = ({ author }) => {
                 <div className="author-card-linkslocation">
 
                     <div className="author-card-location-item">
-                        <LocationMarkerIcon className="author-card-links-icon"/>
-                        <div className="author-card-links-name">
-                            {author.location}
+                        <LocationMarkerIcon className="author-card-link-icon"/>
+                        <div className="author-card-link-name">
+                        {author.location && (author.location)}
                         </div>   
                     </div>
 
                     {twitterUrl && (
                         <a
-                            className="author-card-links-item" id="twitter"
+                            className="author-card-link-item" id="twitter"
                             href={twitterUrl}
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                        <img
-                            className="author-card-links-icon"
-                            src="/images/icons/twitter.svg"
-                            alt="twitter"
-                        />
-                        <div className="author-card-links-name">
+                        <TwitterIcon className="author-card-link-icon"/>
+                        <div className="author-card-link-name">
                             {author.twitter}
                         </div>   
                         </a>
@@ -66,17 +63,13 @@ const AuthorCard = ({ author }) => {
 
                     {facebookUrl && (
                         <a
-                            className="author-card-links-item" id="facebook"
+                            className="author-card-link-item" id="facebook"
                             href={facebookUrl}
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                        <img
-                            className="author-card-links-icon"
-                            src="/images/icons/facebook.svg"
-                            alt="facebook"
-                        />
-                        <div className="author-card-links-name">
+                        <FacebookIcon className="author-card-link-icon"/>
+                        <div className="author-card-link-name">
                             {author.facebook}
                         </div>         
                         </a>
@@ -85,13 +78,13 @@ const AuthorCard = ({ author }) => {
 
                     {author.website && (
                         <a
-                            className="author-card-links-item" id="website"
+                            className="author-card-link-item" id="website"
                             href={author.website}
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                        <LinkIcon className="author-card-links-icon" id ="Website"/>
-                        <div className="author-card-links-name">
+                        <LinkIcon className="author-card-link-icon" id ="Website"/>
+                        <div className="author-card-link-name">
                             {author.website}
                         </div>
                         </a>
