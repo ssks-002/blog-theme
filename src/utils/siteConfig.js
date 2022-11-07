@@ -2,8 +2,8 @@ const config = require(`../../.ghost.json`).production;
 module.exports = {
     siteUrl:
         process.env.NODE_ENV === `production`
-            ? process.env.SITE_URL || config.siteUrl || `http://blog.ssks-ss.com`
-            : `http://localhost:2368`, // Site domain. Do not include a trailing slash!
+            ? process.env.SITE_URL || config.siteUrl || `https://blog.ssks-ss.com`
+            : `https://localhost:2368`, // Site domain. Do not include a trailing slash!
 
     postsPerPage: 2, // Number of posts shows initially and also will add on every scroll 
 
