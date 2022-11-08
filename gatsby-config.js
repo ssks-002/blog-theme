@@ -78,19 +78,11 @@ module.exports = {
                 filter: node => (
                     node.internal.type === `GhostPost` ||
                     node.internal.type === `GhostPage`
-                    
                 ),
                 source: node => node.html,
             },
         },
-        {
-            resolve: 'gatsby-plugin-react-svg',
-            options: {
-              rule: {
-                include: `/icons/`
-              }
-            }
-        },
+
         `gatsby-plugin-image`,
         `gatsby-plugin-sharp`,
         `gatsby-transformer-sharp`,

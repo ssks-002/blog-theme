@@ -13,8 +13,8 @@ const InfiniteScroll = ({ posts, location }) => {
     const loadRef = useRef()
     const scrolloptions ={
         root: null,
-        rootMargin: "20px",
-        threshold: 1.0, 
+        rootMargin: "0px",
+        threshold: .0, 
     }
 
     const handleclick = () => {
@@ -59,6 +59,25 @@ const InfiniteScroll = ({ posts, location }) => {
         const isMore = list.length < posts.length
         setHasMore(isMore)
     }, [list]) 
+
+
+    useEffect(() => {
+        const Postcard  =  Array.from(document.querySelectorAll(".post-card.pre"));
+    
+        const PostcardAnimation = (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.remove("pre");
+                }
+            })
+        };
+    
+        const observer = new IntersectionObserver(PostcardAnimation, scrolloptions)
+        
+        Postcard.forEach( target => {
+            observer.observe(target);
+        })
+    },[loadMore])
 
     return(
         <section className="post-feed" id={location ?  location : ""}>
