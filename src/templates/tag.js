@@ -1,5 +1,6 @@
 import * as React from "react";
 import PropTypes from "prop-types";
+import MediaQuery from "react-responsive";
 import { graphql } from "gatsby";
 import { Layout, InfiniteScroll } from "../components/common";
 import { MetaData } from "../components/common/meta";
@@ -27,6 +28,7 @@ const Tag = ({ data, location }) => {
                     >
                         { tag.feature_image && <img src={tag.feature_image}/> }
                     </figure>    
+                    <MediaQuery query="(min-width: 800px)">
                     <div className="container">
                     <figure className="tag-header-box">
                     <h1 className="tag-name">
@@ -37,9 +39,23 @@ const Tag = ({ data, location }) => {
                     </h1>
                     {tag.description ? <p className="tag-description">{tag.description}</p> : null}
                     </figure>
-                    <InfiniteScroll posts={posts} location="tag"/>
                     </div>
-                    
+                    <InfiniteScroll posts={posts} location="tag"/>
+                    </MediaQuery>
+                    <MediaQuery query="(max-width: 800px)">
+                    <div className="container">
+                        <figure className="tag-header-box">
+                        <h1 className="tag-name">
+                            {tag.name}
+                            <div className="tag-count">
+                            &ndash;  {tag.postCount}件
+                            </div>
+                        </h1>
+                        {tag.description ? <p className="tag-description">{tag.description}</p> : null}
+                        </figure>
+                        <InfiniteScroll posts={posts} location="tag"/>
+                    </div>
+                    </MediaQuery>
                 </main>
             </Layout>
         </>

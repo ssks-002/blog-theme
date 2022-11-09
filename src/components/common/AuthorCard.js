@@ -1,8 +1,9 @@
 import * as React from "react";
 import PropTypes from "prop-types";
+import MediaQuery from "react-responsive";
 import { Link } from "gatsby";
-import { LinkIcon, LocationMarkerIcon, ChevronRightIcon } from '@heroicons/react/outline'
-import { FacebookIcon, TwitterIcon } from "../../../static/images/icons";
+import { LinkIcon, LocationMarkerIcon, ChevronRightIcon, ChevronDownIcon } from '@heroicons/react/outline'
+import { TwitterIcon } from "../../../static/images/icons";
 
 
 const AuthorCard = ({ author }) => {
@@ -17,7 +18,7 @@ const AuthorCard = ({ author }) => {
 
     return (
         <div className="author-card">
-
+            <MediaQuery query="(min-width: 800px)">
             <div className="author-card-content">
                 <div className="author-card-header">
                     <Link to={url} className="author-card-image-container">
@@ -37,16 +38,11 @@ const AuthorCard = ({ author }) => {
                         <Link to={url} div className="author-card-bio">{author.bio && <p>{author.bio}</p>}</Link>
                     </div>
                 </div>
-
                 <div className="author-card-linkslocation">
-
                     <div className="author-card-location-item">
                         <LocationMarkerIcon className="author-card-link-icon"/>
-                        <div className="author-card-link-name">
-                        {author.location && (author.location)}
-                        </div>   
+                        <div className="author-card-link-name">{author.location && (author.location)}</div>   
                     </div>
-
                     {twitterUrl && (
                         <a
                             className="author-card-link-item" id="twitter"
@@ -60,7 +56,6 @@ const AuthorCard = ({ author }) => {
                         </div>   
                         </a>
                     )}
-
                     {facebookUrl && (
                         <a
                             className="author-card-link-item" id="facebook"
@@ -73,9 +68,7 @@ const AuthorCard = ({ author }) => {
                             {author.facebook}
                         </div>         
                         </a>
-                        
                     )}
-
                     {author.website && (
                         <a
                             className="author-card-link-item" id="website"
@@ -94,6 +87,77 @@ const AuthorCard = ({ author }) => {
             <Link to={url} className="author-card-chevronrighticon-container">
             <ChevronRightIcon className="author-card-chevronrighticon" />
             </Link>
+            </MediaQuery>
+            <MediaQuery query="(max-width: 800px)">
+            <div className="author-card-content">
+                <div className="author-card-header">
+                    <Link to={url} className="author-card-image-container">
+                        {author.profile_image ? (
+                            <img
+                                className="author-card-image"
+                                src={author.profile_image} />
+                        ) : (
+                            <img
+                                className="default-author-card-image"
+                                src="/images/icons/avatar.svg"
+                            />
+                        )}
+                    </Link>
+                    <div className="author-card-namebio">
+                        <Link to={url} div className="author-card-name">{author.name}</Link>
+                        <Link to={url} div className="author-card-bio">{author.bio && <p>{author.bio}</p>}</Link>
+                    </div>
+                </div>
+                <div className="author-card-linkslocation">
+                    <div className="author-card-location-item">
+                        <LocationMarkerIcon className="author-card-link-icon"/>
+                        <div className="author-card-link-name">{author.location && (author.location)}</div>   
+                    </div>
+                    {twitterUrl && (
+                        <a
+                            className="author-card-link-item" id="twitter"
+                            href={twitterUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                        <TwitterIcon className="author-card-link-icon"/>
+                        <div className="author-card-link-name">
+                            {author.twitter}
+                        </div>   
+                        </a>
+                    )}
+                    {facebookUrl && (
+                        <a
+                            className="author-card-link-item" id="facebook"
+                            href={facebookUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                        <FacebookIcon className="author-card-link-icon"/>
+                        <div className="author-card-link-name">
+                            {author.facebook}
+                        </div>         
+                        </a>
+                    )}
+                    {author.website && (
+                        <a
+                            className="author-card-link-item" id="website"
+                            href={author.website}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                        <LinkIcon className="author-card-link-icon" id ="Website"/>
+                        <div className="author-card-link-name">
+                            {author.website}
+                        </div>
+                        </a>
+                    )}
+                </div>
+                <Link to={url} className="author-card-chevronrighticon-container">
+                    <ChevronDownIcon className="author-card-chevronrighticon"/>
+                </Link>
+            </div>
+            </MediaQuery>
         </div>
     );
 };
