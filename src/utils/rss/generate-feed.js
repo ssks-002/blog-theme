@@ -130,6 +130,7 @@ const generateRSSFeed = function generateRSSFeed(siteConfig) {
         }
   `,
         output: `/rss`,
+        title: `*新機能搭載`,
     };
 };
 

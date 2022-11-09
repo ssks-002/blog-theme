@@ -22,8 +22,8 @@ const nexturl = `/post/${next.slug}`;
 const toc = post.childHtmlRehype.tableOfContents;
 const scrolloptions = {
     root: null, 
-    rootMargin: "-10% 0px -90% 0px",
-    threshold: 0
+    rootMargin: "-10% 0px -80% 0px",
+    threshold: 0.15
 };
 
 useEffect(() => {

@@ -2,7 +2,7 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import MediaQuery from "react-responsive";
 import { Link } from "gatsby";
-import { LinkIcon, LocationMarkerIcon, ChevronRightIcon, ChevronDownIcon } from '@heroicons/react/outline'
+import { LinkIcon, LocationMarkerIcon, ChevronRightIcon, ChevronUpIcon} from '@heroicons/react/outline'
 import { TwitterIcon } from "../../../static/images/icons";
 
 
@@ -154,7 +154,7 @@ const AuthorCard = ({ author }) => {
                     )}
                 </div>
                 <Link to={url} className="author-card-chevronrighticon-container">
-                    <ChevronDownIcon className="author-card-chevronrighticon"/>
+                    <ChevronUpIcon className="author-card-chevronrighticon"/>
                 </Link>
             </div>
             </MediaQuery>

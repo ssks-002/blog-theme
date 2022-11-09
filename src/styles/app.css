@@ -73,14 +73,12 @@
 
 
     /* Fonts */ 
-    --font-sans-serif: "Inter", "Gen shin Gothic", "Segoe UI", "Helvetica Neue", sans-serif;
+    --font-sans-serif: "Inter", "Gen shin Gothic", "Segoe UI", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", "Meiryo", "Helvetica Neue", sans-serif;
     --font-serif: Georgia, Times, serif;
     --font-mono: Menlo, Courier, monospace;
     --font-light: 100;
     --font-normal: 400;
     --font-bold: 700;
-    --font-heavy: 800;
-
 }
 
 ::-webkit-scrollbar{
@@ -357,7 +355,7 @@ html {
 
 body {
     color: #3c484e;
-    font-family: "Inter", "Gen shin Gothic", "Segoe UI", "Helvetica Neue", sans-serif;
+    font-family: var(--font-sans-serif);
     font-size: 1.5rem;
     line-height: 1.6em;
     font-weight: 400;
@@ -589,7 +587,7 @@ h6 {
 }
 
 .content {
-    display: inline-block;
+    display: flow-root;
     min-height: 75vh;
     font-size: 2rem;
     line-height: 1.7em;
@@ -968,6 +966,14 @@ h6 {
     padding-bottom: 40px;
 }
 
+@media (max-width: 500px) {
+    .site-head{
+        padding-top: 20px;
+        padding-bottom: 20px;
+     }
+ }
+ 
+
 .site-head#home {
     color: var(--color-base);
     background: var(--color-white-base);
@@ -1272,7 +1278,7 @@ h6 {
 .post-card-title {
     font-family: 'Gen Ei Gothic EB', sans-serif;
     font-size: 2.6rem;
-    font-weight: 800;
+    font-weight: bold;
 }
 
 .post-card-image {
@@ -1402,13 +1408,23 @@ h6 {
     margin: auto 0;
 }
 
-.author-card-name{
-    font-weight: 800;
+@media (max-width: 800px) {
+    .author-card-namebio{
+        text-align: center;
+    }
 }
 
-.author-card-bio{
-    font-weight:medium;
-    grid-column: 2/3;
+.author-card-name{
+    font-weight: bold;
+    font-size: 2.6rem;
+}
+
+@media (max-width: 800px) {
+    .author-card-bio{
+        display: table;
+        margin: auto;
+        text-align: left;
+    }
 }
 
 .author-card-linkslocation{
@@ -1569,6 +1585,13 @@ h6 {
     display: flex;
 }
 
+@media (max-width: 800px) {
+    .tag-name {
+        font-size: 3.6rem;
+    }
+}
+
+
 .tag-count{
     margin-left: 3.6rem;
     display: flex;
@@ -1678,6 +1701,12 @@ h6 {
     color: inherit;
 }
 
+@media (max-width: 800px) {
+    .author-name {
+        font-size: 3rem;
+    }
+}
+
 .author-linkslocation{
     color: var(--color-white-base);
     position: absolute;
@@ -1715,7 +1744,7 @@ h6 {
 }
 
 
-@media (max-width: 500px) {
+@media (max-width: 800px) {
     .author-content-box- p {
         font-size: 1.7rem;
     }
