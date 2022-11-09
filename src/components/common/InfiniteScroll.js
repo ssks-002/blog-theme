@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types';
+import MediaQuery from "react-responsive";
 import React ,{ useState, useEffect, useRef } from "react";
 import { postsPerPage } from "../../utils/siteConfig";
 import { PostCard } from "/";
 import { ChevronDoubleDownIcon } from '@heroicons/react/outline'
+
 
 const InfiniteScroll = ({ posts, location }) => {
     
@@ -81,18 +83,39 @@ const InfiniteScroll = ({ posts, location }) => {
 
     return(
         <section className="post-feed" id={location ?  location : ""}>
-            <div className="post-feed-container">
-                <div className="post-feed-column">
-                    {list.map(({ node }, index ) => ( (index % 2 == 0) &&
-                        <PostCard  key={node.id} post={node} index={index} />
-                    ))}
+            <MediaQuery query="(min-width: 800px)">
+                <div className="post-feed-container">
+                    <div className="post-feed-column">
+                        {list.map(({ node }, index ) => ( (index % 2 == 0) &&
+                            <PostCard  key={node.id} post={node} index={index} />
+                        ))}
+                    </div>
+                    <div className="post-feed-column">
+                        {list.map(({ node }, index ) => ( (index % 2 !== 0) &&
+                            <PostCard  key={node.id} post={node} index={index}/>
+                        ))}
+                    </div>
                 </div>
-                <div className="post-feed-column">
-                    {list.map(({ node }, index ) => ( (index % 2 !== 0) &&
-                        <PostCard  key={node.id} post={node} index={index}/>
-                    ))}
-                </div>
-            </div>
+                {clickbutton ? (
+                    <div ref={loadRef} className="post-feed-load" >
+                    {hasMore ? <p>Loading</p> : <p>ここまで&#x1F917;</p>}
+                    </div>
+                    ) : (
+                    hasMore && <button 
+                    className="post-feed-loadmore"  
+                    onClick= {() => {
+                        handleclick();
+                        handleloadMore();
+                    }}>
+                        <ChevronDoubleDownIcon className="post-feed-loadmore-item"/>
+                    </button>
+                    ) 
+                }
+            </MediaQuery>
+            <MediaQuery query="(max-width: 800px)">
+            {list.map(({ node }) => (
+                        <PostCard  key={node.id} post={node}/>
+                        ))}
             {clickbutton ? (
                 <div ref={loadRef} className="post-feed-load" >
                 {hasMore ? <p>Loading</p> : <p>ここまで&#x1F917;</p>}
@@ -108,6 +131,8 @@ const InfiniteScroll = ({ posts, location }) => {
                 </button>
                 ) 
             }
+            </MediaQuery>
+
         </section>
     );
 };

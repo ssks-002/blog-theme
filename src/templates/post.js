@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useEffect } from "react";
 import PropTypes from "prop-types";
+import MediaQuery from "react-responsive";
 import moment from "moment";
 import { graphql, Link } from "gatsby";
 import { Helmet } from "react-helmet";
@@ -40,7 +41,9 @@ useEffect(() => {
                     currentActive.classList.remove("active");
                 }
                 const newActive = document.querySelector(`a[href="#${entry.target.id}"]`);
-                newActive.classList.add("active");
+                if (newActive) {
+                    newActive.classList.add("active");
+                }
             }
         })
     };
@@ -79,68 +82,106 @@ useEffect(() => {
                         </figure>
                         }
                     </div>
-                    <div className="Layout">
-                        <article className="content">
-                            <div className="post-tag-list">
-                            <PrimaryTagCard  tag={post.primary_tag}/>
-                            { tags && tags.map(( value, index ) => (
-                                ( index !== 0 ) && <TagCard tag={value} />                      
-                                ))}
-                            </div>
-                            <section className="post-full-content">
+                    <MediaQuery query="(min-width: 800px)">
+                        <div className="Layout">
+                            <article className="content">
+                                <div className="post-tag-list">
+                                <PrimaryTagCard  tag={post.primary_tag}/>
+                                { tags && tags.map(( value, index ) => (
+                                    ( index !== 0 ) && <TagCard tag={value} />                      
+                                    ))}
+                                </div>
+                                <section className="post-full-content">
 
-                            {/* The main post content */}
-                            <section
-                                className="content-body load-external-scripts"
-                                dangerouslySetInnerHTML={{ __html: post.html }}
-                            />
-                            
-                            </section>
-                            <div className="post-author">
-                                <AuthorCard author={post.primary_author}/>
-                            </div>
-                            <div className="relate-posts">
-                                <h1 className="relate-posts-headline">関連記事</h1>
-                                {relateposts.length ? (
-                                <section>
-                                {relateposts.map(({ node }) => (
-                                    <RelatedPostCard  id={node.id} post={node} />
-                                ))}
-                                </section>
-                                ) : (   
-                                <section>
-                                    <p>ありませんでした &#x1F622;</p>
-                                </section>
-                                )}
+                                {/* The main post content */}
+                                <section
+                                    className="content-body load-external-scripts"
+                                    dangerouslySetInnerHTML={{ __html: post.html }}
+                                />
                                 
-                            </div>
-                        </article>
-                        <div className="sidebar">
-                            <div className="sidebar-container">
-                                <div className="sidebar-box">
-                                    {prev &&
-                                    <Link to={prevurl} className="post-nav"> 
-                                        <ChevronLeftIcon className="post-nav-icon" id="previous"/>
-                                        <div className="post-nav-content" >
-                                            <div className="post-nav-headline" >前の記事</div>
-                                            {prev.title}
-                                        </div>
-                                    </Link>
-                                    }
-                                    <TableOfContents toc={toc} />
-                                    {next &&
-                                    <Link to={nexturl} className="post-nav">
-                                        <div className="post-nav-content" >
-                                            <div className="post-nav-headline" >次の記事</div>
-                                            {next.title}
-                                        </div>
-                                        <ChevronRightIcon className="post-nav-icon" id="next"/>
-                                    </Link>
-                                    }
-                            </div>
+                                </section>
+                                <div className="post-author">
+                                    <AuthorCard author={post.primary_author}/>
+                                </div>
+                                <div className="relate-posts">
+                                    <h1 className="relate-posts-headline">関連記事</h1>
+                                    {relateposts.length ? (
+                                    <section>
+                                    {relateposts.map(({ node }) => (
+                                        <RelatedPostCard  id={node.id} post={node} />
+                                    ))}
+                                    </section>
+                                    ) : (   
+                                    <section>
+                                        <p>ありませんでした &#x1F622;</p>
+                                    </section>
+                                    )}
+                                    
+                                </div>
+                            </article>
+                            <div className="sidebar">
+                                <div className="sidebar-container">
+                                    <div className="sidebar-box">
+                                        {prev &&
+                                        <Link to={prevurl} className="post-nav"> 
+                                            <ChevronLeftIcon className="post-nav-icon" id="previous"/>
+                                            <div className="post-nav-content" >
+                                                <div className="post-nav-headline" >前の記事</div>
+                                                {prev.title}
+                                            </div>
+                                        </Link>
+                                        }
+                                        <TableOfContents toc={toc} />
+                                        {next &&
+                                        <Link to={nexturl} className="post-nav">
+                                            <div className="post-nav-content" >
+                                                <div className="post-nav-headline" >次の記事</div>
+                                                {next.title}
+                                            </div>
+                                            <ChevronRightIcon className="post-nav-icon" id="next"/>
+                                        </Link>
+                                        }
+                                </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </MediaQuery>
+                    <MediaQuery query="(max-width: 800px)">
+                    <article className="content">
+                                <div className="post-tag-list">
+                                <PrimaryTagCard  tag={post.primary_tag}/>
+                                { tags && tags.map(( value, index ) => (
+                                    ( index !== 0 ) && <TagCard tag={value} />                      
+                                    ))}
+                                </div>
+                                <section className="post-full-content">
+                                {/* The main post content */}
+                                <section
+                                    className="content-body load-external-scripts"
+                                    dangerouslySetInnerHTML={{ __html: post.html }}
+                                />
+                                
+                                </section>
+                                <div className="post-author">
+                                    <AuthorCard author={post.primary_author}/>
+                                </div>
+                                <div className="relate-posts">
+                                    <h1 className="relate-posts-headline">関連記事</h1>
+                                    {relateposts.length ? (
+                                    <section>
+                                    {relateposts.map(({ node }) => (
+                                        <RelatedPostCard  id={node.id} post={node} />
+                                    ))}
+                                    </section>
+                                    ) : (   
+                                    <section>
+                                        <p>ありませんでした &#x1F622;</p>
+                                    </section>
+                                    )}
+                                    
+                                </div>
+                            </article>
+                    </MediaQuery>
                     </div>
                 </main>
             </Layout>

@@ -84,24 +84,22 @@ import { TwitterIcon, FacebookIcon } from "../../static/images/icons";
                                 </div>
                                 </a>
                             )}
-                        </div>
-                </div>
-                <div className="author-image-container">
-                    {author.profile_image ? (
-                        <img
-                            className="author-image"
-                            src={author.profile_image}
-                        />
-                    ) : (
-                        <img
-                            className="default-author-image"
-                            src="/images/icons/avatar.svg"
-                        />
-                    )}
-                </div>
-              
-                
+                    </div>
+                            <div className="author-image-container">
+                        {author.profile_image ? (
+                            <img
+                                className="author-image"
+                                src={author.profile_image}
+                            />
+                        ) : (
+                            <img
+                                className="default-author-image"
+                                src="/images/icons/avatar.svg"
+                            />
+                        )}
+                    </div>
                     <InfiniteScroll posts={posts} location="author"/>
+                </div>
                 </main>
             </Layout>
         </>

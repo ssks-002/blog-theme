@@ -8,4 +8,4 @@ export { default as PrimaryTagCard } from './PrimaryTagCard'
 export { default as ArchiveNav } from './ArchiveNav'
 export { default as TableOfContents } from './TableOfContents'
 export { default as InfiniteScroll } from './InfiniteScroll'
-
+export { default as HamburgerNav } from './HamburgerNav'

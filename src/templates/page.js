@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useEffect } from "react";
 import PropTypes from "prop-types";
+import MediaQuery from "react-responsive";
 import { graphql } from "gatsby";
 import { Helmet } from "react-helmet";
 import { Layout, AuthorCard, TableOfContents, ArchiveNav } from "../components/common";
@@ -35,7 +36,9 @@ useEffect(() => {
                     currentActive.classList.remove("active");
                 }
                 const newActive = document.querySelector(`a[href="#${entry.target.id}"]`);
-                newActive.classList.add("active");
+                if (newActive) {
+                    newActive.classList.add("active");
+                }
             }
         })
     };
@@ -62,6 +65,7 @@ useEffect(() => {
                 </figure>
                 <div className="container">
                     <h1 className="post-title">{page.title} </h1>
+                    <MediaQuery query="(min-width: 800px)">
                     <div className="Layout">
                         <article className="content">
                             <section className="post-full-content">
@@ -88,6 +92,23 @@ useEffect(() => {
                             </div>
                         </div>
                     </div>
+                    </MediaQuery>
+                    <MediaQuery query="(max-width: 800px)">
+                        <article className="content">
+                            <section className="post-full-content">
+
+                            {/* The main post content */}
+                            <section
+                                className="content-body load-external-scripts"
+                                dangerouslySetInnerHTML={{ __html: page.html }}
+                            />
+                            
+                            </section>
+                            <div className="post-author">
+                                <AuthorCard author={page.primary_author}/>
+                            </div>
+                        </article>
+                    </MediaQuery>
                     </div>
                 </main>
             </Layout>

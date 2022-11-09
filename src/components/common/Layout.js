@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet";
 import { Link, StaticQuery, graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 
-import { Navigation } from ".";
+import { Navigation, HamburgerNav } from ".";
 import config from "../../utils/siteConfig";
 
 // Styles
@@ -50,6 +50,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                         data={site.navigation}
                                         navClass="site-nav-item"
                                     />
+                                <HamburgerNav/>
                             </nav>
                         </div>
                     </div>
