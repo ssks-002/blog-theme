@@ -1757,10 +1757,6 @@ h6 {
 
 
 @media (max-width: 500px) {
-    .author-content-box {
-        border-bottom: var(--color-bg) 1px solid;
-        padding-bottom: 4vw;
-    }
     .author-content-box- p {
         font-size: 1.7rem;
     }

@@ -1,5 +1,6 @@
 import * as React  from "react";
 import PropTypes from "prop-types";
+import MediaQuery from "react-responsive";
 import { graphql, Link } from "gatsby";
 import { Layout, ArchiveNav, InfiniteScroll } from "../components/common";
 import { MetaData } from "../components/common/meta";
@@ -28,7 +29,9 @@ const Archive = ({ data, location, pageContext }) => {
                             <h4 className="archive-header-postcounts">&ndash;  {posts.length}件</h4>
                         </div>
                     </div>
+                <MediaQuery query="(min-width: 800px)">
                 <div className="Layout">
+                
                     <InfiniteScroll posts={posts} isHome={true}/>
                     <div className="sidebar">
                         <div className="sidebar-container">
@@ -77,6 +80,10 @@ const Archive = ({ data, location, pageContext }) => {
                         </div>
                     </div>
                 </div>
+                </MediaQuery>
+                <MediaQuery query="(max-width: 800px)">
+                    <InfiniteScroll posts={posts} isHome={true}/>
+                </MediaQuery>
                 </div>
                 </main>
             </Layout>
