@@ -16,7 +16,7 @@ const {years, yearMonths, PostCounts} = pageContext
 return (
     <>
         <MetaData location={location} />
-        <Layout isHome={true}>
+        <Layout isHome={true} location="index" years={years} yearMonths={yearMonths} PostCounts={PostCounts} >
             <MediaQuery query="(min-width: 800px)">
                 <main className="site-main">
                     <div className="container">

@@ -1,39 +1,66 @@
 import * as React from "react";
-import { useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { Link } from "gatsby";
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
+import { Navigation, TableOfContents, ArchiveNav } from "../common";
 
 /**
  * Navigation component
  */
 
-const HamburgerNav = ({ data, navClass }) => {
-    const [open, setOpen] = useState(false);
-    const toggleFunction = () => {
-        setOpen((prevState) => !prevState);
-      };
-    
+export const OpenContext = createContext();
+
+const HamburgerNav = ({ data, location, toc, years, yearMonths, PostCounts, prev, prevurl, next, nexturl }) => {
+    const [isOpen, setIsOpen] = useState(false)
+    const toggleDrawer = () => {
+        setIsOpen((prevState) => !prevState)
+    };
+
+    useEffect(() => {
+        const screen = document.querySelector("body")
+        if(isOpen && screen){
+            screen.classList.add("opened")
+        }
+
+        const openedscreen = document.querySelector("body.opened")
+        if(!isOpen && openedscreen){
+            openedscreen.classList.remove("opened")
+        }
+    },[isOpen]);
+
     return(
-        open ?(
-        <button>
-            <XIcon
-                onClick={toggleFunction}
-            />
-        </button>
-        ) : (
-        <button>
-            <MenuIcon
-                onClick={toggleFunction}
-            />
-         </button>
-        )
+        <>
+        <button onClick={toggleDrawer}><MenuIcon/></button>
+        {isOpen && 
+            <>
+            <label className="drawer-filter" />
+            <div className="drawer" onClick={toggleDrawer}>
+                <div className="drawer-container">
+                    <button  className="drawer-nav-close">
+                    <XIcon/>
+                    </button>
+                    <Navigation
+                        data={data}
+                        navClass="drawer-nav-item"
+                        onClick={toggleDrawer}
+                    />
+                    {(location == `post` || location == `page` ) && (
+                    <div className="drawer-nav-item" >
+                        <TableOfContents toc={toc} prev={prev} prevurl={prevurl} next={next} nexturl={nexturl} toggleDrawer={toggleDrawer} />
+                    </div>
+                    )}
+                    {(location == `index` || location == `archive` || location == `page` ) && (
+                    <div className="drawer-nav-item" >
+                        <ArchiveNav years={years} yearMonths={yearMonths} PostCounts={PostCounts} />
+                    </div>
+                    )}
+                </div>
+            </div>
+                </>
+        }
+        </>
     )
 
-};
-
-HamburgerNav.defaultProps = {
-    navClass: `site-nav-item`,
 };
 
 HamburgerNav.propTypes = {
@@ -43,7 +70,15 @@ HamburgerNav.propTypes = {
             url: PropTypes.string.isRequired,
         }).isRequired
     ).isRequired,
-    navClass: PropTypes.string,
+    location: PropTypes.oneOf([`index`, `post`, `page`, `archive`]).isRequired,
+    toc: PropTypes.any.isRequired,
+    years: PropTypes.any.isRequired,
+    yearMonths: PropTypes.any.isRequired,
+    PostCounts: PropTypes.any.isRequired,
+    prev: PropTypes.any.isRequired,
+    prevurl: PropTypes.any.isRequired,
+    next: PropTypes.any.isRequired, 
+    nexturl: PropTypes.any.isRequired,
 };
 
 export default HamburgerNav;

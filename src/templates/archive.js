@@ -17,7 +17,7 @@ const Archive = ({ data, location, pageContext }) => {
     return (
         <>
             <MetaData location={location} />
-            <Layout isHome={true}>
+            <Layout isHome={true} location="archive" years={years} yearMonths={yearMonths} PostCounts={PostCounts}>
             <main className="site-main">
                 <div className="container">
                     <div className="archive-header">
@@ -81,6 +81,7 @@ const Archive = ({ data, location, pageContext }) => {
                     </div>
                 </div>
                 </MediaQuery>
+                
                 <MediaQuery query="(max-width: 800px)">
                     <InfiniteScroll posts={posts} isHome={true}/>
                 </MediaQuery>

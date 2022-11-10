@@ -82,9 +82,6 @@ module.exports = {
                 source: node => node.html,
             },
         },
-        {
-            resolve: `react-modern-drawer`
-        },
         `react-scroll`,
         `gatsby-plugin-image`,
         `gatsby-plugin-sharp`,

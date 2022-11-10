@@ -56,7 +56,7 @@ useEffect(() => {
             <Helmet>
                 <style type="text/css">{`${page.codeinjection_styles}`}</style>
             </Helmet>
-            <Layout>
+            <Layout location="page" toc={toc} years={years} yearMonths={yearMonths} PostCounts={PostCounts} >
             <main className="site-main">
                 <figure className="post-feature-image">
                     {page.feature_image &&  
@@ -93,6 +93,7 @@ useEffect(() => {
                         </div>
                     </div>
                     </MediaQuery>
+                    
                     <MediaQuery query="(max-width: 800px)">
                         <article className="content">
                             <section className="post-full-content">

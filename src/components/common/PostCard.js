@@ -12,7 +12,7 @@ const PostCard = ({ post, options = {minute : "すぐ読めます" , minutes :"%
     const primary_tag = post.primary_tag;
 
     return (
-        <article className="post-card pre">
+        <article className="post-card idling">
             <div className="post-card-container" id="header">
                 <Link to={url}>
                     <h2 className="post-card-title">{post.title}</h2>

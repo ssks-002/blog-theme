@@ -1,12 +1,224 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[*新機能搭載]]></title><description><![CDATA[新機能を搭載しています]]></description><link>https://blog.ssks-ss.com/</link><image><url>https://blog.ssks-ss.com/favicon.png</url><title>*新機能搭載</title><link>https://blog.ssks-ss.com/</link></image><generator>Ghost 2.9</generator><lastBuildDate>Wed, 09 Nov 2022 04:14:52 GMT</lastBuildDate><atom:link href="https://blog.ssks-ss.com/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[10こめ]]></title><description><![CDATA[画像が表示されないよね
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[*新機能搭載]]></title><description><![CDATA[新機能を搭載しています]]></description><link>https://blog.ssks-ss.com/</link><image><url>https://blog.ssks-ss.com/favicon.png</url><title>*新機能搭載</title><link>https://blog.ssks-ss.com/</link></image><generator>Ghost 2.9</generator><lastBuildDate>Thu, 10 Nov 2022 00:16:23 GMT</lastBuildDate><atom:link href="https://blog.ssks-ss.com/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[10こめ]]></title><description><![CDATA[画像が表示されないよね
 
 
 いやだねえ
+
+
+ * テキスト
+   
+   * テキスト
+   * テキスト
+   
+
+
+ 1. テキスト
+ 2. テキスト
+    
+    3. テキスト
+
+
+テキストやコード
+
+
+コード
+
+
+
+Qiita
+
+
+
+
+
+テキスト
+
+
+
+
+
+テキスト
+
+
+
+
+テキスト
+
+テキスト
+
+テキスト
+
+
+
+
+
+Head
+Head
+Head
+
+
+
+
+Text
+Text
+Text
+
+
+Text
+Text
+Text
+
+
+
+
+
+https://www.youtube.com/watch?v=WRVsOCh907o
+
+
+https://twitter.com/jack/status/20
+
+
+7つ目の記事なかなかやるじゃん*新機能搭載ssks
+
+just setting up my twttr
+
+— jack (@jack) March 21, 2006
+
 ]]></description><link>https://blog.ssks-ss.com/10kome/</link><guid isPermaLink="false">Ghost__Post__636abc50dd324fa948beb169</guid><category><![CDATA[ブログ]]></category><dc:creator><![CDATA[ssks]]></dc:creator><pubDate>Tue, 08 Nov 2022 20:30:34 GMT</pubDate><media:content url="http://res-4.cloudinary.com/ddrr1fpam/image/upload/q_auto/v1/blog-images/--.jpg" medium="image"/><content:encoded><![CDATA[<!--kg-card-begin: markdown--><h1 id="%E7%94%BB%E5%83%8F%E3%81%8C%E8%A1%A8%E7%A4%BA%E3%81%95%E3%82%8C%E3%81%AA%E3%81%84%E3%82%88%E3%81%AD">画像が表示されないよね</h1>
 <img src="http://res-4.cloudinary.com/ddrr1fpam/image/upload/q_auto/v1/blog-images/--.jpg" alt="10こめ"/><p>いやだねえ</p>
-<!--kg-card-end: markdown-->]]></content:encoded></item><item><title><![CDATA[9つ目]]></title><description><![CDATA[今のうちにnetlifyの仕様も確認しておかなきゃね
+<!--kg-card-end: markdown--><!--kg-card-begin: markdown--><ul>
+<li>テキスト
+<ul>
+<li>テキスト</li>
+<li>テキスト</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>テキスト</li>
+<li>テキスト<br>
+3. テキスト</br></li>
+</ol>
+<p><code>テキストやコード</code></p>
+<pre><code class="language-言語:タイトル">コード
+</code></pre>
+<p><a href="http://qiita.com/">Qiita</a></p>
+<blockquote>
+<p>テキスト</p>
+<blockquote>
+<p>テキスト</p>
+</blockquote>
+</blockquote>
+<p><strong>テキスト</strong><br>
+<em>テキスト</em><br>
+<s>テキスト</s></br></br></p>
+<table>
+<thead>
+<tr>
+<th>Head</th>
+<th>Head</th>
+<th>Head</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Text</td>
+<td>Text</td>
+<td>Text</td>
+</tr>
+<tr>
+<td>Text</td>
+<td>Text</td>
+<td>Text</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://www.youtube.com/watch?v=WRVsOCh907o">https://www.youtube.com/watch?v=WRVsOCh907o</a></p>
+<p><a href="https://twitter.com/jack/status/20">https://twitter.com/jack/status/20</a></p>
+<!--kg-card-end: markdown--><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://blog.ssks-ss.com/post/7tumu-noji-shi/"><div class="kg-bookmark-content"><div class="kg-bookmark-title">7つ目の記事</div><div class="kg-bookmark-description">なかなかやるじゃん</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="https://blog.ssks-ss.com/icons/icon-512x512.png" alt="10こめ"><span class="kg-bookmark-author">*新機能搭載</span><span class="kg-bookmark-publisher">ssks</span></img></div></div><div class="kg-bookmark-thumbnail"><img src="http://res-5.cloudinary.com/ddrr1fpam/image/upload/q_auto/v1/blog-images/maple-leaves-2789234_1920.jpg" alt="10こめ"/></div></a></figure><figure class="kg-card kg-embed-card"><iframe width="200" height="113" src="https://www.youtube.com/embed/EukvZizHIeQ?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" title="【わしゃがなTV】おまけ動画その266「傑作が次々誕生するソクラテスラ」【中村悠一/マフィア梶田】"/></figure><figure class="kg-card kg-embed-card"><blockquote class="twitter-tweet"><p lang="en" dir="ltr">just setting up my twttr</p>&mdash; jack (@jack) <a href="https://twitter.com/jack/status/20?ref_src=twsrc%5Etfw">March 21, 2006</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"/>
+</figure><figure class="kg-card kg-image-card kg-card-hascaption"><img src="http://res-2.cloudinary.com/ddrr1fpam/image/upload/q_auto/v1/blog-images/---2.png" class="kg-image" alt="10こめ" loading="lazy" width="1920" height="1080"><figcaption>うおお！！！！！！！！</figcaption></img></figure><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="http://res-2.cloudinary.com/ddrr1fpam/image/upload/q_auto/v1/blog-images/---2.png" class="kg-image" alt="10こめ" loading="lazy" width="1920" height="1080"><figcaption>うおお！！！！！！！！</figcaption></img></figure><figure class="kg-card kg-image-card kg-width-full kg-card-hascaption"><img src="http://res-2.cloudinary.com/ddrr1fpam/image/upload/q_auto/v1/blog-images/---2.png" class="kg-image" alt="10こめ" loading="lazy" width="1920" height="1080"><figcaption>うおお！！！！！！！！</figcaption></img></figure>]]></content:encoded></item><item><title><![CDATA[9つ目]]></title><description><![CDATA[今のうちにnetlifyの仕様も確認しておかなきゃね
 ]]></description><link>https://blog.ssks-ss.com/9tumu/</link><guid isPermaLink="false">Ghost__Post__6362e9ee0d5caa3464848ed5</guid><category><![CDATA[テスト2]]></category><dc:creator><![CDATA[ssks]]></dc:creator><pubDate>Wed, 02 Nov 2022 22:07:17 GMT</pubDate><content:encoded><![CDATA[<!--kg-card-begin: markdown--><p>今のうちにnetlifyの仕様も確認しておかなきゃね</p>
 <!--kg-card-end: markdown-->]]></content:encoded></item><item><title><![CDATA[8こめ]]></title><description><![CDATA[見出し1
+
+
+ghostアップデートが改悪だったな
+
+
+
+見出し1-1
+
+
+ああ
+
+
+
+見出し1-2
+
+
+い
+
+い
+
+い
+
+い
+
+い
+
+
+
+見出し1-2-1
+
+
+うううう
+
+うう
+
+
+
+見出し2
+
+
+なんでアナリティクスとか入れたんだ…
+
+
+
+見出し2-1
+
+
+ああ
+
+あああ
+
+あ
+
+あ
+
+
+
+見出し2-2
+
+
+いいいいい
+
+
+
+見出し2-3
+
+
+う
+
+ううううう
+
+
+ううううううう
+
+
+う
+
+
+
+見出し1
 
 
 ghostアップデートが改悪だったな
@@ -116,6 +328,33 @@ ghostアップデートが改悪だったな
 
 見出し4-3
 ]]></description><link>https://blog.ssks-ss.com/8kome/</link><guid isPermaLink="false">Ghost__Post__636285355b047d90505562fd</guid><category><![CDATA[tag1]]></category><dc:creator><![CDATA[ssks]]></dc:creator><pubDate>Wed, 02 Nov 2022 14:58:42 GMT</pubDate><content:encoded><![CDATA[<!--kg-card-begin: markdown--><h1 id="%E8%A6%8B%E5%87%BA%E3%81%971">見出し1</h1>
+<p>ghostアップデートが改悪だったな</p>
+<h2 id="%E8%A6%8B%E5%87%BA%E3%81%971-1">見出し1-1</h2>
+<p>ああ</p>
+<h2 id="%E8%A6%8B%E5%87%BA%E3%81%971-2">見出し1-2</h2>
+<p>い<br>
+い<br>
+い<br>
+い<br>
+い</br></br></br></br></p>
+<h3 id="%E8%A6%8B%E5%87%BA%E3%81%971-2-1">見出し1-2-1</h3>
+<p>うううう<br>
+うう</br></p>
+<h1 id="%E8%A6%8B%E5%87%BA%E3%81%972">見出し2</h1>
+<p>なんでアナリティクスとか入れたんだ…</p>
+<h2 id="%E8%A6%8B%E5%87%BA%E3%81%972-1">見出し2-1</h2>
+<p>ああ<br>
+あああ<br>
+あ<br>
+あ</br></br></br></p>
+<h2 id="%E8%A6%8B%E5%87%BA%E3%81%972-2">見出し2-2</h2>
+<p>いいいいい</p>
+<h2 id="%E8%A6%8B%E5%87%BA%E3%81%972-3">見出し2-3</h2>
+<p>う<br>
+ううううう</br></p>
+<p>ううううううう</p>
+<p>う</p>
+<h1 id="%E8%A6%8B%E5%87%BA%E3%81%971">見出し1</h1>
 <p>ghostアップデートが改悪だったな</p>
 <h2 id="%E8%A6%8B%E5%87%BA%E3%81%971-1">見出し1-1</h2>
 <p>ああ</p>

@@ -1,18 +1,22 @@
 import * as React from "react";
-import { useEffect } from "react";
+import { useEffect , createContext } from "react";
 import PropTypes from "prop-types";
 import MediaQuery from "react-responsive";
 import moment from "moment";
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
 import { Helmet } from "react-helmet";
 import { Layout, PrimaryTagCard, TagCard, RelatedPostCard, AuthorCard, TableOfContents } from "../components/common";
 import { MetaData } from "../components/common/meta";
-import { CalendarIcon, RefreshIcon, ChevronRightIcon, ChevronLeftIcon } from '@heroicons/react/outline'
+import { CalendarIcon, RefreshIcon } from '@heroicons/react/outline'
+
+export const {next, prev, prevurl, nexturl, toc} = createContext();
 
 /**
  * post page
  */
+
 const Post = ({ data, location, pageContext}) => {
+
 const { prev, next } = pageContext;
 const post = data.ghostPost;
 const tags = post.tags;
@@ -25,6 +29,7 @@ const scrolloptions = {
     rootMargin: "-10% 0px -80% 0px",
     threshold: 0.15
 };
+
 
 useEffect(() => {
     const targetheadingh1  =  Array.from(document.querySelectorAll(".content-body > h1"));
@@ -61,11 +66,13 @@ useEffect(() => {
             <Helmet>
                 <style type="text/css">{`${post.codeinjection_styles}`}</style>
             </Helmet>
-            <Layout>
+            <Layout location="post" toc={toc} prev={prev} prevurl={prevurl} next={next} nexturl={nexturl}>
             <main className="site-main">
                 <figure className="post-feature-image">
                     {post.feature_image &&  
-                    <img src={post.feature_image}/>
+                    <img src={post.feature_image}
+                         alt={post.feature_image_alt ? post.feature_image_alt : post.title}
+                         />
                     }
                 </figure>
                 <div className="container">
@@ -85,6 +92,7 @@ useEffect(() => {
                     <MediaQuery query="(min-width: 800px)">
                         <div className="Layout">
                             <article className="content">
+                            <figcaption className="post-feature-image-caption">{post.feature_image_caption}</figcaption>
                                 <div className="post-tag-list">
                                 <PrimaryTagCard  tag={post.primary_tag}/>
                                 { tags && tags.map(( value, index ) => (
@@ -122,30 +130,13 @@ useEffect(() => {
                             <div className="sidebar">
                                 <div className="sidebar-container">
                                     <div className="sidebar-box">
-                                        {prev &&
-                                        <Link to={prevurl} className="post-nav"> 
-                                            <ChevronLeftIcon className="post-nav-icon" id="previous"/>
-                                            <div className="post-nav-content" >
-                                                <div className="post-nav-headline" >前の記事</div>
-                                                {prev.title}
-                                            </div>
-                                        </Link>
-                                        }
-                                        <TableOfContents toc={toc} />
-                                        {next &&
-                                        <Link to={nexturl} className="post-nav">
-                                            <div className="post-nav-content" >
-                                                <div className="post-nav-headline" >次の記事</div>
-                                                {next.title}
-                                            </div>
-                                            <ChevronRightIcon className="post-nav-icon" id="next"/>
-                                        </Link>
-                                        }
-                                </div>
+                                        <TableOfContents toc={toc} prev={prev} prevurl={prevurl} next={next} nexturl={nexturl}/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </MediaQuery>
+
                     <MediaQuery query="(max-width: 800px)">
                     <article className="content">
                                 <div className="post-tag-list">
@@ -199,6 +190,7 @@ Post.propTypes = {
         }).isRequired,
     }).isRequired,
     location: PropTypes.object.isRequired,
+    toc:PropTypes.string
 };
 
 export default Post;
@@ -216,6 +208,7 @@ export const postQuery = graphql`
             primary_author {
                 location
               }
+            feature_image_caption
             ...GhostPostFields
         }
         relatepost: allGhostPost(

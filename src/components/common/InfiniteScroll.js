@@ -27,7 +27,6 @@ const InfiniteScroll = ({ posts, location }) => {
         setLoadMore(true)
     }
 
-    //this will be assigned entries to loadRef.current
     const handleObserver = (entries) => {
         const target = entries[0]
         if (target.isIntersecting) {
@@ -35,7 +34,6 @@ const InfiniteScroll = ({ posts, location }) => {
         }
     }
 
-    //preventing from loading when button exist, scroll infinately when button donot exist (create observe instance and ovserving)
     useEffect(() => {
         const observer = new IntersectionObserver(handleObserver, scrolloptions)
         if (loadRef.current) {
@@ -43,7 +41,6 @@ const InfiniteScroll = ({ posts, location }) => {
         }
     }, [loadRef.current])
 
-    //add to post-feed more posts when hasmore is true. however, regardlss of hasmore's state, list will upadte and loadmore is reset (set false)
     useEffect(() => {
     if (loadMore && hasMore) {
         const currentLength = list.length
@@ -56,7 +53,6 @@ const InfiniteScroll = ({ posts, location }) => {
         }
     }, [loadMore]) 
 
-    // to indicate message when ismore is false (no more posts)
     useEffect(() => {
         const isMore = list.length < posts.length
         setHasMore(isMore)
@@ -64,12 +60,12 @@ const InfiniteScroll = ({ posts, location }) => {
 
 
     useEffect(() => {
-        const Postcard  =  Array.from(document.querySelectorAll(".post-card.pre"));
+        const Postcard  =  Array.from(document.querySelectorAll(".post-card.idling"));
     
         const PostcardAnimation = (entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.remove("pre");
+                    entry.target.classList.remove("idling");
                 }
             })
         };
