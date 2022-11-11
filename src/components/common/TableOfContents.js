@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React from "react";
-import { Link as Scroll } from 'react-scroll';
 import { Link } from "gatsby";
 import { ChevronRightIcon, ChevronLeftIcon } from '@heroicons/react/outline'
 
@@ -32,15 +31,15 @@ const TableOfContents = ({ toc, prev, prevurl, next, nexturl, toggleDrawer }) =>
       {toc && toc.map( h1  => {
         return(
         <>
-        <Scroll href={`#${h1.id}`} to={`${h1.id}`} smooth={true} offset={-120} className="toc-item h1" onClick={toggleDrawer}>{h1.heading}</Scroll>
+        <a href={`#${h1.id}`} to={`${h1.id}`}className="toc-item h1" onClick={toggleDrawer}>{h1.heading}</a>
         {h1.items && h1.items.map( h2 => {
           return(
             <>
-              <Scroll href={`#${h2.id}`} to={`${h2.id}`} smooth={true} offset={-120} className="toc-item h2" onClick={toggleDrawer}>{h2.heading}</Scroll>
+              <a href={`#${h2.id}`} to={`${h2.id}`} className="toc-item h2" onClick={toggleDrawer}>{h2.heading}</a>
               {h2.items && h2.items.map( h3 => {
               return(
                 <>
-                  <Scroll href={`#${h3.id}`} to={`${h3.id}`} smooth={true} offset={-120} className="toc-item h3" onClick={toggleDrawer}>{h3.heading}</Scroll>
+                  <a href={`#${h3.id}`} to={`${h3.id}`} className="toc-item h3" onClick={toggleDrawer}>{h3.heading}</a>
                 </>
               )
             })}

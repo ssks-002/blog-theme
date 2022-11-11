@@ -82,7 +82,6 @@ module.exports = {
                 source: node => node.html,
             },
         },
-        `react-scroll`,
         `gatsby-plugin-image`,
         `gatsby-plugin-sharp`,
         `gatsby-transformer-sharp`,

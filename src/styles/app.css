@@ -2,7 +2,7 @@
 /* ---------------------------------------------------------- /*
 
 - Fonts
-- Vars
+- Variables
 - Reset
 - Defaults
 - Layout
@@ -18,7 +18,7 @@
 - Tag Archives
 - Author Archives
 - Footer
-- etc
+- kg-styles
 
 /* Fonts Load
 /* ---------------------------------------------------------- */
@@ -270,7 +270,7 @@ kbd,
 pre,
 samp {
     font-family: monospace, monospace;
-    font-size: 1em;
+    font-size: 0.8em;
 }
 button,
 input,
@@ -353,6 +353,13 @@ html {
     font-size: 62.5%;
     background: var(--color-base);
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    scroll-behavior: smooth;
+}
+
+.footnote {
+    display: block;
+    padding-top: 70px;
+    margin-top: -70px;
 }
 
 body {
@@ -565,6 +572,10 @@ h6 {
     font-weight: 500;
 }
 
+.footnotes-sep{
+    margin: 1em 0;
+}
+
 /* Layout
 /* ---------------------------------------------------------- */
 
@@ -616,7 +627,7 @@ body.opened{
     background-color: var(--color-filter-gray);
     z-index: 5;
     backdrop-filter: blur(3px);
-    animation: filtercoming cubic-bezier(0.2, 0.6, 0.4, 1) 0.5s;
+    animation: filtercoming cubic-bezier(0.2, 0.6, 0.4, 1) 0.2s;
 }
 
 @keyframes filtercoming{
@@ -657,12 +668,12 @@ body.opened{
     width: 40vw;
     background-color: var(--color-bg-white);
     padding: 0.4em 0.6em 0.4em 1.2em;
-    animation: drawercoming 0.4s cubic-bezier(0.2, 0.6, 0.4, 1) 0.1s both;
+    animation: drawercoming 0.2s cubic-bezier(0.2, 0.6, 0.4, 1) 0.08s both;
 }
 
 @keyframes drawercoming{
     from{
-        transform: translateX(20vw);
+        transform: translateX(10vw);
     }
     to{
         transform: translateX(0);
@@ -881,21 +892,17 @@ body.opened{
 
 .content-body pre {
     margin: 0.4em 0 1.8em;
-    font-size: 1.6rem;
     line-height: 1.4em;
-    white-space: pre-wrap;
     padding: 20px;
-    background: var(--color-base);
-    color: var(--color-white-base);
+    background: #1B2B34;
+    color: #CDD3DE;
     border-radius: 12px;
 }
 
 .content-body code{
-	background: var(--color-base);
-    color: var(--color-white-base);
+	background: #1B2B34;
+    color: #CDD3DE;
 	border-radius: 5px;
-	font-size: 1.6rem;
-	font-weight: bolder;
 	padding: 4px 4px;
 }
 
@@ -942,6 +949,8 @@ body.opened{
 
 .sidebar{
     margin-left: 5rem;
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
 }
 
 .sidebar a:hover{
@@ -1088,6 +1097,10 @@ body.opened{
     color: currentColor;
 }
 
+.site-mast a:hover{
+    text-decoration: none;
+}
+
 .site-head a:hover{
     text-decoration: none;
 }
@@ -1179,6 +1192,8 @@ body.opened{
 .site-mast-left{
     display: flex;
     align-items: center;
+    font-weight: bold;
+    font-size: 2.2rem;
 }
 
 .site-nav {
@@ -1201,13 +1216,13 @@ body.opened{
 /* ---------------------------------------------------------- */
 
 .index-header-box{
-    background: linear-gradient(180deg, transparent 70%, var(--color-bg-white) 70%);
-    margin: 8vh 0;
-    padding-right: 5.0em;
     display: inline-flex;
+    margin: 6vh 0;
 }
 
 .index-header{
+    background: linear-gradient(180deg, transparent 70%, var(--color-bg-white) 70%);
+    padding-right: 3.0em;
     display: inline;
     font-size: 4.0rem;
     margin: 0;
@@ -1217,6 +1232,7 @@ body.opened{
     display: flex;
     flex-direction: column;
     margin-bottom: 4vh;
+    grid-column: 1 / 2;
 }
 
 @media (max-width: 800px) {
@@ -1282,13 +1298,21 @@ body.opened{
     height: 100%;
 }
 
+.tag-list{
+    grid-column: 1 / 2;
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 10px;
+    margin-bottom: 4vh;
+}
+
 /* Archive Navigation
 /* ---------------------------------------------------------- */
 .archive-header{
     display: flex;
     align-items: flex-end;
     font-family: "Gen Ei Gothic EB";
-    margin: 8vh 0;
+    margin: 6vh 0;
 }
 
 .archive-header-box{
@@ -1296,6 +1320,7 @@ body.opened{
     align-items: flex-end;
     background: linear-gradient(180deg, transparent 70%, var(--color-bg-white) 70%);
     padding-right: 4.8em;
+    flex-wrap: wrap
 }
 
 .archive-headline{
@@ -2075,6 +2100,57 @@ figcaption{
     font-size: 1.6rem;
     color: var(--color-gray);
 }
+
+.kg-card.kg-callout-card {
+    display: flex;
+    border-radius: 5px;
+    padding: 20px 28px;
+    margin: 3.2rem 0 0;
+}
+
+.kg-callout-emoji{
+    margin-right: 0.6em;
+}
+
+.kg-callout-card-grey{
+    background-color: rgba(124,139,154,.13);
+}
+
+.kg-callout-card-white{
+    background-color: transparent;
+    box-shadow :inset  0 0 0 1px rgb(124 139 154 / 25%);
+}
+
+.kg-callout-card-blue{
+    background-color: rgba(33,172,232,.12);
+}
+
+.kg-callout-card-green{
+    background-color: rgba(52,183,67,.12);
+}
+
+.kg-callout-card-yellow{
+    background-color: rgba(240,165,15,.13);
+}
+
+.kg-callout-card-red{
+    background-color: rgba(209,46,46,.11);
+}
+
+.kg-callout-card-pink{
+    background-color: rgba(225,71,174,.11);
+}
+
+.kg-callout-card-purple{
+    background-color: rgba(135,85,236,.12);
+}
+
+.kg-callout-card-accent{
+    color: var(--color-white-base);
+    background-color: #ff1a75;
+}
+
+
 
 /* Gallery Styles
 /* ---------------------------------------------------------- */

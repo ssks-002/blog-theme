@@ -61,17 +61,6 @@ const DefaultLayout = ({ data, children, bodyClass, isHome, location, toc, years
                     <div className="site-mast">
                             <Link to="/" className="site-mast-left">
                                 <div>
-                                    {site.logo ? (
-                                        <img
-                                            className="site-logo"
-                                            src={site.logo}
-                                            alt={site.title}
-                                        />
-                                    ) : (
-                                        <GatsbyImage image={data.file.childImageSharp.gatsbyImageData} alt={site.title} />
-                                    )}
-                                </div>
-                                <div>
                                     {site.title}
                                 </div>
                             </Link>
@@ -88,17 +77,6 @@ const DefaultLayout = ({ data, children, bodyClass, isHome, location, toc, years
                     <div className="container">
                     <div className="site-mast">
                             <Link to="/" className="site-mast-left">
-                                <div>
-                                    {site.logo ? (
-                                        <img
-                                            className="site-logo"
-                                            src={site.logo}
-                                            alt={site.title}
-                                        />
-                                    ) : (
-                                        <GatsbyImage image={data.file.childImageSharp.gatsbyImageData} alt={site.title} />
-                                    )}
-                                </div>
                                 <div>
                                     {site.title}
                                 </div>
@@ -113,23 +91,12 @@ const DefaultLayout = ({ data, children, bodyClass, isHome, location, toc, years
                     </div>
                 </header>
             </MediaQuery>
-            
+
             <MediaQuery query="(max-width: 800px)">
                 <header className="site-head" id={isHome ? "home" : "nohome"}>
                     <div className="container">
                     <div className="site-mast">
                             <Link to="/" className="site-mast-left">
-                                <div>
-                                    {site.logo ? (
-                                        <img
-                                            className="site-logo"
-                                            src={site.logo}
-                                            alt={site.title}
-                                        />
-                                    ) : (
-                                        <GatsbyImage image={data.file.childImageSharp.gatsbyImageData} alt={site.title} />
-                                    )}
-                                </div>
                                 <div>
                                     {site.title}
                                 </div>
@@ -144,17 +111,6 @@ const DefaultLayout = ({ data, children, bodyClass, isHome, location, toc, years
                     <div className="container">
                     <div className="site-mast">
                             <Link to="/" className="site-mast-left">
-                                <div>
-                                    {site.logo ? (
-                                        <img
-                                            className="site-logo"
-                                            src={site.logo}
-                                            alt={site.title}
-                                        />
-                                    ) : (
-                                        <GatsbyImage image={data.file.childImageSharp.gatsbyImageData} alt={site.title} />
-                                    )}
-                                </div>
                                 <div>
                                     {site.title}
                                 </div>

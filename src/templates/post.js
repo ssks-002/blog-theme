@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useEffect , createContext } from "react";
+import { useEffect } from "react";
 import PropTypes from "prop-types";
 import MediaQuery from "react-responsive";
 import moment from "moment";
@@ -8,8 +8,6 @@ import { Helmet } from "react-helmet";
 import { Layout, PrimaryTagCard, TagCard, RelatedPostCard, AuthorCard, TableOfContents } from "../components/common";
 import { MetaData } from "../components/common/meta";
 import { CalendarIcon, RefreshIcon } from '@heroicons/react/outline'
-
-export const {next, prev, prevurl, nexturl, toc} = createContext();
 
 /**
  * post page
@@ -139,6 +137,7 @@ useEffect(() => {
 
                     <MediaQuery query="(max-width: 800px)">
                     <article className="content">
+                        <figcaption className="post-feature-image-caption">{post.feature_image_caption}</figcaption>
                                 <div className="post-tag-list">
                                 <PrimaryTagCard  tag={post.primary_tag}/>
                                 { tags && tags.map(( value, index ) => (

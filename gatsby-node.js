@@ -58,7 +58,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const pages = result.data.allGhostPage.edges;
     const posts = result.data.allGhostPost.edges;
 
-    // Extract yearArray and year/monthArray , generate postcounts about each year and year/month
+    // Extract yearArray and year/monthArray , generate postcounts from each year and year/month
     const years = new Set();
     const yearMonths = new Set();
     const PostCounts = {};
@@ -126,16 +126,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
     // Create post pages
     posts.forEach(({ node }, index) => {
-
-        let tag;
-
-        if(node.primary_tag.slug){
-            tag = node.primary_tag.slug;
-        }
-        else {
-            tag = false;
-        }
-
+        
         const prev = index === 0 ? false : posts[index - 1].node
         const next = index === posts.length - 1 ? false : posts[index + 1].node
 
@@ -144,7 +135,7 @@ exports.createPages = async ({ graphql, actions }) => {
             component: postTemplate,
             context: {
                 slug: node.slug,
-                tag,
+                tag: node.primary_tag.slug,
                 prev,
                 next
             },

@@ -2,7 +2,7 @@ import * as React  from "react";
 import PropTypes from "prop-types";
 import MediaQuery from "react-responsive";
 import { graphql } from "gatsby";
-import { Layout, ArchiveNav, InfiniteScroll } from "../components/common";
+import { Layout, ArchiveNav, InfiniteScroll, PrimaryTagCard } from "../components/common";
 import { MetaData } from "../components/common/meta";
 
 /**
@@ -11,6 +11,7 @@ import { MetaData } from "../components/common/meta";
 
 const Index = ({ data, location, pageContext }) => {
 const posts = data.allGhostPost.edges;
+const tags = data.allGhostTag.edges;
 const {years, yearMonths, PostCounts} = pageContext
 
 return (
@@ -25,6 +26,14 @@ return (
                         </div>
                         <div className="Layout">
                             <InfiniteScroll posts={posts} isHome={true}></InfiniteScroll>
+                            <div className="index-header-box">
+                                <h2 className="index-header">Tags</h2>
+                            </div>
+                            <section className="tag-list">
+                            {tags && tags.map(({ node }) => (
+                                <PrimaryTagCard key={node.id} tag={node} />
+                            ))}
+                            </section>
                             <div className="sidebar">
                                 <div className="sidebar-container" id="1">
                                     <div className="sidebar-box">
@@ -43,6 +52,14 @@ return (
                             <h2 className="index-header">Archives</h2>
                         </div>
                             <InfiniteScroll posts={posts} isHome={true}></InfiniteScroll>
+                        <div className="index-header-box">
+                            <h2 className="index-header">Tags</h2>
+                        </div>
+                        <section className="tag-list">
+                        {tags && tags.map(({ node }) => (
+                            <PrimaryTagCard key={node.id} tag={node} />
+                        ))}
+                        </section>
                     </div>
                 </main>
             </MediaQuery>
@@ -72,6 +89,18 @@ export const pageQuery = graphql`
             edges {
                 node {
                     ...GhostPostFields
+                }
+            }
+        }
+        allGhostTag(
+            sort: { order: DESC, fields: [count___posts] }
+            filter: { visibility: { eq: "public" } }
+        ) {
+            edges {
+                node {
+                    name
+                    accent_color
+                    slug
                 }
             }
         }
