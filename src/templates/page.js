@@ -77,9 +77,7 @@ useEffect(() => {
                             />
                             
                             </section>
-                            <div className="post-author">
-                                <AuthorCard author={page.primary_author}/>
-                            </div>
+
                         </article>
                         <div className="sidebar">
                             <div className="sidebar-container" >
@@ -93,7 +91,7 @@ useEffect(() => {
                         </div>
                     </div>
                     </MediaQuery>
-                    
+
                     <MediaQuery query="(max-width: 800px)">
                         <article className="content">
                             <section className="post-full-content">
@@ -105,9 +103,7 @@ useEffect(() => {
                             />
                             
                             </section>
-                            <div className="post-author">
-                                <AuthorCard author={page.primary_author}/>
-                            </div>
+
                         </article>
                     </MediaQuery>
                     </div>
