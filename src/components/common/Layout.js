@@ -130,6 +130,9 @@ const DefaultLayout = ({ data, children, bodyClass, isHome, location, toc, years
                 {/* The footer at the very bottom of the screen */}
                 <footer className="site-foot">
                     <div className="site-foot-nav container">
+                        <div className="totop" >
+                            <a href="#">ページトップ</a>
+                        </div>
                         <div className="site-foot-nav-right">
                             <Link to="/">{site.title}</Link> © 2022 
                         </div>

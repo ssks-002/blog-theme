@@ -23,14 +23,16 @@ const HamburgerNav = ({ data, location, toc, years, yearMonths, PostCounts, prev
         }
 
         const openedscreen = document.querySelector("body.opened")
+        const openeddrawer = document.querySelector("body.opened")
         if(!isOpen && openedscreen){
             openedscreen.classList.remove("opened")
         }
+
     },[isOpen]);
 
     return(
         <>
-        <button onClick={toggleDrawer}><MenuIcon/></button>
+        <button aria-label="drawerbutton" onClick={toggleDrawer}><MenuIcon/></button>
         {isOpen && 
             <>
             <label className="drawer-filter" />

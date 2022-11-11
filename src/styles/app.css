@@ -1472,8 +1472,6 @@ body.opened{
 }
 
 .post-card-publishedat {
-    font-family: "Inter";
-    display: inline;
     font-size: 2.8rem;
     color: var(--color-white-base);
     transform: translate(-0.25rem,0.25rem);
@@ -1936,13 +1934,6 @@ body.opened{
     background: var(--color-base);
 }
 
-.site-foot-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0 4vw;
-}
-
 .site-foot-nav a {
     color: var(--color-white-base);
 }
@@ -1954,6 +1945,8 @@ body.opened{
 
 .site-foot-nav-right{
     margin-left: auto;
+    text-align: end;
+    margin-right: 4vw;;
 }
 
 .site-foot-nav-right a {
@@ -1965,6 +1958,9 @@ body.opened{
     padding-right: 0;
 }
 
+.totop{
+    text-align: center;
+}
 
 /* Koenig Styles
 /* ---------------------------------------------------------- */
