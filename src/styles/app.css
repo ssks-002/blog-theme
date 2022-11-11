@@ -1626,6 +1626,12 @@ body.opened{
     margin: auto 5px auto 0;
 }
 
+.author-card-location-icon {
+    height: 2rem;
+    width: 2rem;
+    margin: auto 5px auto 0;
+}
+
 .author-card-link-icon:hover{
     color: var(--color-gray);
 }
