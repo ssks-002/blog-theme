@@ -94,7 +94,7 @@ const InfiniteScroll = ({ posts, location }) => {
                 </div>
                 {clickbutton ? (
                     <div ref={loadRef} className="post-feed-load" >
-                    {hasMore ? <p>Loading</p> : <p>ここまで&#x1F917;</p>}
+                    {hasMore ? <p>Loading</p> : <p>&#x1F917;</p>}
                     </div>
                     ) : (
                     hasMore && <button 
@@ -114,7 +114,7 @@ const InfiniteScroll = ({ posts, location }) => {
                         ))}
             {clickbutton ? (
                 <div ref={loadRef} className="post-feed-load" >
-                {hasMore ? <p>Loading</p> : <p>ここまで&#x1F917;</p>}
+                {hasMore ? <p>Loading</p> : <p>&#x1F917;</p>}
                 </div>
                 ) : (
                 hasMore && <button 

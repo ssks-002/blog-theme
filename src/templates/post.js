@@ -8,6 +8,13 @@ import { Helmet } from "react-helmet";
 import { Layout, PrimaryTagCard, TagCard, RelatedPostCard, AuthorCard, TableOfContents } from "../components/common";
 import { MetaData } from "../components/common/meta";
 import { CalendarIcon, RefreshIcon } from '@heroicons/react/outline'
+import {
+    FacebookShareButton,
+    TwitterShareButton,
+    TwitterIcon,
+    FacebookIcon,
+  } from "react-share";
+import { siteUrl } from "../utils/siteConfig"
 
 /**
  * post page
@@ -16,7 +23,10 @@ import { CalendarIcon, RefreshIcon } from '@heroicons/react/outline'
 const Post = ({ data, location, pageContext}) => {
 
 const { prev, next } = pageContext;
+const borderRadius = 5;
+const iconSize = 50;
 const post = data.ghostPost;
+const authorTwitter = post.primary_author.twitter.substring(1);
 const tags = post.tags;
 const relateposts = data.relatepost.edges;
 const prevurl = `/post/${prev.slug}`;
@@ -97,14 +107,26 @@ useEffect(() => {
                                     ( index !== 0 ) && <TagCard tag={value} />                      
                                     ))}
                                 </div>
-                                <section className="post-full-content">
 
+                                <section className="post-full-content">
                                 {/* The main post content */}
                                 <section
                                     className="content-body load-external-scripts"
                                     dangerouslySetInnerHTML={{ __html: post.html }}
                                 />
-                                
+                                </section>
+
+                                <section className="share">
+                                <div className="social-links__icon">
+                                    <TwitterShareButton url={`${siteUrl}/post/${post.slug}/`} title={post.title} via={authorTwitter}>
+                                        <TwitterIcon borderRadius={borderRadius} size={iconSize} />
+                                    </TwitterShareButton>
+                                </div>
+                                <div className="social-links__icon">
+                                    <FacebookShareButton url={`${siteUrl}/post/${post.slug}/`} >
+                                        <FacebookIcon borderRadius={borderRadius} size={iconSize} />
+                                    </FacebookShareButton>
+                                </div>
                                 </section>
                                 <div className="post-author">
                                     <AuthorCard author={post.primary_author}/>
@@ -144,13 +166,26 @@ useEffect(() => {
                                     ( index !== 0 ) && <TagCard tag={value} />                      
                                     ))}
                                 </div>
+
                                 <section className="post-full-content">
                                 {/* The main post content */}
                                 <section
                                     className="content-body load-external-scripts"
                                     dangerouslySetInnerHTML={{ __html: post.html }}
                                 />
+                                </section>
                                 
+                                <section className="share">
+                                <div className="social-links__icon">
+                                    <TwitterShareButton url={`${siteUrl}/post/${post.slug}/`} title={post.title} via={authorTwitter}>
+                                        <TwitterIcon borderRadius={borderRadius} size={iconSize} />
+                                    </TwitterShareButton>
+                                </div>
+                                <div className="social-links__icon">
+                                    <FacebookShareButton url={`${siteUrl}/post/${post.slug}/`} >
+                                        <FacebookIcon borderRadius={borderRadius} size={iconSize} />
+                                    </FacebookShareButton>
+                                </div>
                                 </section>
                                 <div className="post-author">
                                     <AuthorCard author={post.primary_author}/>

@@ -944,6 +944,13 @@ body.opened{
     margin: auto 0 auto 1.5rem;
 }
 
+.share{
+    display: flex;
+    justify-content: center;
+    grid-gap: 25px;
+    margin: 2.5vh 0;
+}
+
 /* Sidebar 
 /* ---------------------------------------------------------- */
 

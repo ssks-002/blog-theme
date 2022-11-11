@@ -31,15 +31,15 @@ const TableOfContents = ({ toc, prev, prevurl, next, nexturl, toggleDrawer }) =>
       {toc && toc.map( h1  => {
         return(
         <>
-        <a href={`#${h1.id}`} to={`${h1.id}`}className="toc-item h1" onClick={toggleDrawer}>{h1.heading}</a>
+        <a href={`#${h1.id}`} className="toc-item h1" onClick={toggleDrawer}>{h1.heading}</a>
         {h1.items && h1.items.map( h2 => {
           return(
             <>
-              <a href={`#${h2.id}`} to={`${h2.id}`} className="toc-item h2" onClick={toggleDrawer}>{h2.heading}</a>
+              <a href={`#${h2.id}`} className="toc-item h2" onClick={toggleDrawer}>{h2.heading}</a>
               {h2.items && h2.items.map( h3 => {
               return(
                 <>
-                  <a href={`#${h3.id}`} to={`${h3.id}`} className="toc-item h3" onClick={toggleDrawer}>{h3.heading}</a>
+                  <a href={`#${h3.id}`}  className="toc-item h3" onClick={toggleDrawer}>{h3.heading}</a>
                 </>
               )
             })}
