@@ -40,7 +40,7 @@ const AuthorCard = ({ author }) => {
                 </div>
                 <div className="author-card-linkslocation">
                     <div className="author-card-location-item">
-                        <LocationMarkerIcon className="author-card-link-icon"/>
+                        <LocationMarkerIcon className="author-card-location-icon"/>
                         <div className="author-card-link-name">{author.location && (author.location)}</div>   
                     </div>
                     {twitterUrl && (
