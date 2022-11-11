@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[*新機能搭載]]></title><description><![CDATA[新機能を搭載しています]]></description><link>https://blog.ssks-ss.com/</link><image><url>https://blog.ssks-ss.com/favicon.png</url><title>*新機能搭載</title><link>https://blog.ssks-ss.com/</link></image><generator>Ghost 2.9</generator><lastBuildDate>Fri, 11 Nov 2022 04:01:18 GMT</lastBuildDate><atom:link href="https://blog.ssks-ss.com/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[ブログ作成した]]></title><description><![CDATA[ブログをつくってみる
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[*新機能搭載]]></title><description><![CDATA[新機能を搭載しています]]></description><link>https://blog.ssks-ss.com/</link><image><url>https://blog.ssks-ss.com/favicon.png</url><title>*新機能搭載</title><link>https://blog.ssks-ss.com/</link></image><generator>Ghost 2.9</generator><lastBuildDate>Fri, 11 Nov 2022 05:10:21 GMT</lastBuildDate><atom:link href="https://blog.ssks-ss.com/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[ブログ作成した]]></title><description><![CDATA[ブログをつくってみる
 
 
 このブログはGatsby+Ghost+Netlify+Cloudinaryで構築されています
@@ -40,7 +40,8 @@ markdown記法
 これはH2タグです
 
 
-これはH6タグです
+
+これはH3タグです
 
 
 ※自動で目次を生成します
@@ -86,7 +87,7 @@ fake@example.com
  * First item
  * Second item
  * Third item
- ]]></description><link>https://blog.ssks-ss.com/01/</link><guid isPermaLink="false">Ghost__Post__636da5a839d233d604a89248</guid><category><![CDATA[テスト]]></category><dc:creator><![CDATA[ssks]]></dc:creator><pubDate>Fri, 11 Nov 2022 01:54:33 GMT</pubDate><content:encoded><![CDATA[<!--kg-card-begin: markdown--><h1 id="%E3%83%96%E3%83%AD%E3%82%B0%E3%82%92%E3%81%A4%E3%81%8F%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B">ブログをつくってみる</h1>
+]]></description><link>https://blog.ssks-ss.com/01/</link><guid isPermaLink="false">Ghost__Post__636da5a839d233d604a89248</guid><category><![CDATA[テスト]]></category><dc:creator><![CDATA[ssks]]></dc:creator><pubDate>Fri, 11 Nov 2022 01:54:33 GMT</pubDate><content:encoded><![CDATA[<!--kg-card-begin: markdown--><h1 id="%E3%83%96%E3%83%AD%E3%82%B0%E3%82%92%E3%81%A4%E3%81%8F%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B">ブログをつくってみる</h1>
 <p>このブログはGatsby+Ghost+Netlify+Cloudinaryで構築されています<br>
 ドメイン更新料だけで運用できます</br></p>
 <h2 id="markdown%E8%A8%98%E6%B3%95">markdown記法</h2>
@@ -104,7 +105,7 @@ fake@example.com
 </code></pre>
 <h1 id="%E3%81%93%E3%82%8C%E3%81%AFh1%E3%82%BF%E3%82%B0%E3%81%A7%E3%81%99">これはH1タグです</h1>
 <h2 id="%E3%81%93%E3%82%8C%E3%81%AFh2%E3%82%BF%E3%82%B0%E3%81%A7%E3%81%99">これはH2タグです</h2>
-<h6 id="%E3%81%93%E3%82%8C%E3%81%AFh6%E3%82%BF%E3%82%B0%E3%81%A7%E3%81%99">これはH6タグです</h6>
+<h3 id="%E3%81%93%E3%82%8C%E3%81%AFh3%E3%82%BF%E3%82%B0%E3%81%A7%E3%81%99">これはH3タグです</h3>
 <p>※自動で目次を生成します</p>
 <p><em>italic type</em><br>
 <em>斜体</em></br></p>
