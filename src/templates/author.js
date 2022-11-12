@@ -20,6 +20,7 @@ import { TwitterIcon, FacebookIcon } from "../../static/images/icons";
     const facebookUrl = author.facebook
         ? `https://www.facebook.com/${author.facebook.replace(/^\//, ``)}`
         : null;
+    const links = author.website.split(",")
 
     return (
         <>
@@ -72,20 +73,21 @@ import { TwitterIcon, FacebookIcon } from "../../static/images/icons";
                                     </div> 
                                     </a>
                                 )}
-                                {author.website && (
+                                {links && (links.map( link => {
+                                    const shortlink = link.replace("https://www.","");
+                                    return(
                                     <a
                                         className="author-link-item" 
-                                        id="website"
-                                        href={author.website}
+                                        href={link}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                    <LinkIcon className="author-link-icon" id ="Website"/>
+                                    <LinkIcon className="author-link-icon" />
                                     <div className="author-link-name">
-                                        {author.website}
+                                        {shortlink}
                                     </div>
                                     </a>
-                                )}
+                                )}))}
                             </div>
                     </div>
                     <div className="author-image-container">
@@ -144,20 +146,21 @@ import { TwitterIcon, FacebookIcon } from "../../static/images/icons";
                                     </div> 
                                     </a>
                                 )}
-                                {author.website && (
+                                {links && (links.map( link => {
+                                    const shortlink = link.replace("https://www.","");
+                                    return(
                                     <a
                                         className="author-link-item" 
-                                        id="website"
-                                        href={author.website}
+                                        href={link}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                    <LinkIcon className="author-link-icon" id ="Website"/>
+                                    <LinkIcon className="author-link-icon" />
                                     <div className="author-link-name">
-                                        {author.website}
+                                        {shortlink}
                                     </div>
                                     </a>
-                                )}
+                                )}))}
                             </div>
                         <div className="author-image-container">
                         {author.profile_image ? (
