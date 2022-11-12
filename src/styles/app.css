@@ -609,6 +609,7 @@ h6 {
     font-size: 1.8rem;
     line-height: 1.8em;
     background-color: var(--color-bg-white);
+    word-break: break-all;
 }
 
 
@@ -1605,6 +1606,7 @@ body.opened{
     display: flex;
     margin: 10px;
     flex-grow: 1;
+    word-break: break-all;
 }
 
 .author-card-link-item:hover{
