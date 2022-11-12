@@ -768,6 +768,7 @@ body.opened{
     height: 2px; 
     width: 100%;
     background-color: var(--color-bg-black);
+    margin-top: 0.2em;
 }
 
 .post-title {
