@@ -24,7 +24,6 @@ const HamburgerNav = ({ data, location, toc, years, yearMonths, PostCounts, prev
         if(!isOpen && openedscreen){
             openedscreen.classList.remove("opened")
         }
-        console.log(isOpen)
     },[isOpen]);
 
     return(
@@ -44,7 +43,7 @@ const HamburgerNav = ({ data, location, toc, years, yearMonths, PostCounts, prev
                     />
                     {(location == `post` || location == `page` ) && (
                     <div className="drawer-nav-item" >
-                        <TableOfContents toc={toc} prev={prev} prevurl={prevurl} next={next} nexturl={nexturl} toggleDrawer={toggleDrawer} />
+                        <TableOfContents toc={toc} prev={prev} prevurl={prevurl} next={next} nexturl={nexturl} setIsOpen={setIsOpen} />
                     </div>
                     )}
                     {(location == `index` || location == `archive` || location == `page` ) && (
