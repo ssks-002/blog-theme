@@ -1,5 +1,5 @@
 import * as React from "react";
-import { createContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import { Navigation, TableOfContents, ArchiveNav } from "../common";
@@ -7,8 +7,6 @@ import { Navigation, TableOfContents, ArchiveNav } from "../common";
 /**
  * Navigation component
  */
-
-export const OpenContext = createContext();
 
 const HamburgerNav = ({ data, location, toc, years, yearMonths, PostCounts, prev, prevurl, next, nexturl }) => {
     const [isOpen, setIsOpen] = useState(false)
@@ -23,11 +21,10 @@ const HamburgerNav = ({ data, location, toc, years, yearMonths, PostCounts, prev
         }
 
         const openedscreen = document.querySelector("body.opened")
-        const openeddrawer = document.querySelector("body.opened")
         if(!isOpen && openedscreen){
             openedscreen.classList.remove("opened")
         }
-
+        console.log(isOpen)
     },[isOpen]);
 
     return(
@@ -44,7 +41,6 @@ const HamburgerNav = ({ data, location, toc, years, yearMonths, PostCounts, prev
                     <Navigation
                         data={data}
                         navClass="drawer-nav-item"
-                        onClick={toggleDrawer}
                     />
                     {(location == `post` || location == `page` ) && (
                     <div className="drawer-nav-item" >
