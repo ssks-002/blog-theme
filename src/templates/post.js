@@ -8,12 +8,7 @@ import { Helmet } from "react-helmet";
 import { Layout, PrimaryTagCard, TagCard, RelatedPostCard, AuthorCard, TableOfContents } from "../components/common";
 import { MetaData } from "../components/common/meta";
 import { CalendarIcon, RefreshIcon } from '@heroicons/react/outline'
-import {
-    FacebookShareButton,
-    TwitterShareButton,
-    TwitterIcon,
-    FacebookIcon,
-  } from "react-share";
+import { FacebookShareButton, TwitterShareButton, TwitterIcon, FacebookIcon } from "react-share";
 import { siteUrl } from "../utils/siteConfig"
 
 /**

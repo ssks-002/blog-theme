@@ -8,7 +8,7 @@
 - Layout
 - Sidebar
 - Drawer
-- Post
+- Post(Page)
 - Header
 - Archive Navigation
 - Post Card
@@ -950,6 +950,14 @@ body.opened{
     justify-content: center;
     grid-gap: 25px;
     margin: 2.5vh 0;
+}
+
+/*page*/
+.page-updateat{
+    text-align: end;
+    margin: 0 2.5vw 2.0rem 2.5vw;
+    color: var(--color-gray);
+    font-size: 1.6rem;
 }
 
 /* Sidebar 

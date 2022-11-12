@@ -2,6 +2,7 @@ import * as React from "react";
 import { useEffect } from "react";
 import PropTypes from "prop-types";
 import MediaQuery from "react-responsive";
+import moment from "moment";
 import { graphql } from "gatsby";
 import { Helmet } from "react-helmet";
 import { Layout, AuthorCard, TableOfContents, ArchiveNav } from "../components/common";
@@ -77,7 +78,11 @@ useEffect(() => {
                             />
                             
                             </section>
+                            <div className="page-updateat">最終更新日 - {moment(page.update_at).format(`YYYY年MM月DD日`)}</div>
 
+                        <div className="post-author">
+                                <AuthorCard author={page.primary_author}/>
+                        </div>
                         </article>
                         <div className="sidebar">
                             <div className="sidebar-container" >
@@ -104,6 +109,9 @@ useEffect(() => {
                             
                             </section>
 
+                        <div className="post-author">
+                                <AuthorCard author={page.primary_author}/>
+                        </div>
                         </article>
                     </MediaQuery>
                     </div>
@@ -131,6 +139,9 @@ export const postQuery = graphql`
     query ($slug: String!) {
         ghostPage(slug: { eq: $slug }) {
             ...GhostPageFields
+            primary_author{
+                location
+            }
             childHtmlRehype {
                 html
                 tableOfContents

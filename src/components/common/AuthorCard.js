@@ -14,6 +14,7 @@ const AuthorCard = ({ author }) => {
     const facebookUrl = author.facebook
     ? `https://www.facebook.com/${author.facebook.replace(/^\//, ``)}`
     : null;
+    const links = author.website.split(",")
 
 
     return (
@@ -41,7 +42,7 @@ const AuthorCard = ({ author }) => {
                 <div className="author-card-linkslocation">
                     <div className="author-card-location-item">
                         <LocationMarkerIcon className="author-card-location-icon"/>
-                        <div className="author-card-link-name">{author.location && (author.location)}</div>   
+                        <div className="author-card-link-name">{author.location && (author.location)}</div>
                     </div>
                     {twitterUrl && (
                         <a
@@ -69,19 +70,21 @@ const AuthorCard = ({ author }) => {
                         </div>         
                         </a>
                     )}
-                    {author.website && (
+                    {links && (links.map( link => {
+                        const shortlink = link.replace("https://www.","");
+                        return(
                         <a
                             className="author-card-link-item" id="website"
-                            href={author.website}
+                            href={link}
                             target="_blank"
                             rel="noopener noreferrer"
                         >
                         <LinkIcon className="author-card-link-icon" id ="Website"/>
                         <div className="author-card-link-name">
-                            {author.website}
+                            {shortlink}
                         </div>
                         </a>
-                    )}
+                    )}))}
                 </div>
             </div>
             <Link to={url} className="author-card-chevronrighticon-container">
@@ -139,19 +142,21 @@ const AuthorCard = ({ author }) => {
                         </div>         
                         </a>
                     )}
-                    {author.website && (
+                    {links && (links.map( link => {
+                        const shortlink = link.replace("https://www.","");
+                        return(
                         <a
                             className="author-card-link-item" id="website"
-                            href={author.website}
+                            href={link}
                             target="_blank"
                             rel="noopener noreferrer"
                         >
                         <LinkIcon className="author-card-link-icon" id ="Website"/>
                         <div className="author-card-link-name">
-                            {author.website}
+                            {shortlink}
                         </div>
                         </a>
-                    )}
+                    )}))}
                 </div>
                 <Link to={url} className="author-card-chevronrighticon-container">
                     <ChevronUpIcon className="author-card-chevronrighticon"/>
