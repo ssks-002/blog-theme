@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import MediaQuery from "react-responsive";
 import { Helmet } from "react-helmet";
 import { Link, StaticQuery, graphql } from "gatsby";
-import { GatsbyImage } from "gatsby-plugin-image";
 import { Navigation, HamburgerNav } from ".";
 
 // Styles

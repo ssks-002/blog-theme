@@ -22,6 +22,9 @@ import { TwitterIcon, FacebookIcon } from "../../static/images/icons";
         : null;
     const links = author.website.split(",")
 
+    const linkselem = document.querySelector( ".author-linkslocation" );
+    const linksHeight = linkselem.clientHeight ;
+
     return (
         <>
             <MetaData data={data} location={location} type="profile" />

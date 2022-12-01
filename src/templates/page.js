@@ -78,7 +78,7 @@ useEffect(() => {
                             />
                             
                             </section>
-                            <div className="page-updateat">最終更新日 - {moment(page.update_at).format(`YYYY年MM月DD日`)}</div>
+                            <div className="page-updateat">最終更新日 - {moment(page.updated_at).format(`YYYY年MM月DD日`)}</div>
                         <div className="post-author">
                                 <AuthorCard author={page.primary_author}/>
                         </div>
