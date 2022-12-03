@@ -133,7 +133,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome, location, toc, years
                             <a href="#">ページトップ</a>
                         </div>
                         <div className="site-foot-nav-right">
-                            <Link to="https://github.com/ssks-002/blog">{site.title}</Link> © 2022 
+                            <Link to="https://github.com/ssks-002/blog-theme">{site.title}</Link> © 2022 
                         </div>
                     </div>
                 </footer>
