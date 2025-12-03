@@ -1,0 +1,73 @@
+{
+  "name": "gatsby-starter-ghost",
+  "description": "A starter template to build lightning fast websites with Ghost and Gatsby",
+  "version": "2.0.0",
+  "license": "MIT",
+  "author": "Ghost Foundation",
+  "homepage": "https://docs.ghost.org/api/gatsby/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tryghost/gatsby-starter-ghost.git"
+  },
+  "engines": {
+    "node": ">= 12.13.0"
+  },
+  "bugs": {
+    "url": "https://github.com/tryghost/gatsby-starter-ghost/issues"
+  },
+  "keywords": [
+    "gatsby",
+    "ghost"
+  ],
+  "main": "n/a",
+  "scripts": {
+    "serve": "gatsby build && NODE_ENV=production gatsby serve",
+    "build": "gatsby build",
+    "dev": "gatsby develop",
+    "lint": "eslint . --ext .js --cache",
+    "develop": "gatsby develop",
+    "start": "gatsby serve",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "clean": "gatsby clean",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "babel-eslint": "10.1.0",
+    "eslint": "8.26.0",
+    "eslint-plugin-ghost": "2.16.0",
+    "eslint-plugin-react": "7.31.10"
+  },
+  "dependencies": {
+    "@heroicons/react": "v1",
+    "@tryghost/helpers": "1.1.74",
+    "@tryghost/helpers-gatsby": "2.0.4",
+    "cheerio": "1.0.0-rc.11",
+    "gatsby": "4.15.2",
+    "gatsby-plugin-advanced-sitemap": "2.1.0",
+    "gatsby-plugin-catch-links": "4.15.0",
+    "gatsby-plugin-feed": "4.15.1",
+    "gatsby-plugin-image": "2.15.1",
+    "gatsby-plugin-manifest": "4.15.1",
+    "gatsby-plugin-offline": "5.15.1",
+    "gatsby-plugin-react-helmet": "5.15.0",
+    "gatsby-plugin-sharp": "4.15.1",
+    "gatsby-remark-katex": "6.0",
+    "gatsby-remark-sub-sup": "^1.0.0",
+    "gatsby-source-filesystem": "4.15.0",
+    "gatsby-source-ghost": "5.0.0",
+    "gatsby-transformer-katex": "^1.2.1",
+    "gatsby-transformer-rehype": "https://github.com/ssks-002/ssks002-gatsby-transformer-rehype",
+    "gatsby-transformer-remark": "5.0",
+    "gatsby-transformer-sharp": "4.15.1",
+    "ghost-storage-cloudinary": "^2.2.5",
+    "katex": "^0.16.3",
+    "lodash": "4.17.21",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-helmet": "6.1.0",
+    "react-infinite-scroller": "^1.2.6",
+    "react-responsive": "^9.0.0",
+    "react-share": "^4.4.1",
+    "url": "0.11.0"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "development": {
+    "apiUrl": "https://ghost.ssks-ss.com",
+    "contentApiKey": "068d0ca54d4d551fe9fab72986"
+  },
+  "production": {
+    "apiUrl": "https://ghost.ssks-ss.com",
+    "contentApiKey": "068d0ca54d4d551fe9fab72986"
+  }
+}
