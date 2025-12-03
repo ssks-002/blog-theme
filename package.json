@@ -60,7 +60,7 @@
     "gatsby-transformer-remark": "5.0",
     "gatsby-transformer-sharp": "4.15.1",
     "ghost-storage-cloudinary": "^2.2.5",
-    "katex": "^0.16.3",
+    "katex": "^0.16.25",
     "lodash": "4.17.21",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -68,6 +68,8 @@
     "react-infinite-scroller": "^1.2.6",
     "react-responsive": "^9.0.0",
     "react-share": "^4.4.1",
+    "rehype-parse": "^9.0.1",
+    "rehype-react": "^8.0.0",
     "url": "0.11.0"
   }
 }

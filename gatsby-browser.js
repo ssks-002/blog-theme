@@ -9,20 +9,7 @@
  * via ids/classnames etc.
  *
  */
-const katex = require("katex");
 require("katex/dist/katex.min.css");
-
-exports.onRouteUpdate = () => {
-  const content = document.querySelectorAll(".content");
-  content.forEach(el => {
-    katex.renderMathInElement(el, {
-      delimiters: [
-        { left: "$$", right: "$$", display: true },
-        { left: "$", right: "$", display: false },
-      ],
-    });
-  });
-};
 
 var trustAllScripts = function () {
     var scriptNodes = document.querySelectorAll('.load-external-scripts script');

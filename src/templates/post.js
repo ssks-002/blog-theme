@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useEffect } from "react";
+import { useEffect, useState  } from "react";
 import PropTypes from "prop-types";
 import MediaQuery from "react-responsive";
 import moment from "moment";
@@ -10,6 +10,8 @@ import { MetaData } from "../components/common/meta";
 import { CalendarIcon, RefreshIcon } from '@heroicons/react/outline'
 import { FacebookShareButton, TwitterShareButton, TwitterIcon, FacebookIcon } from "react-share";
 import { siteUrl } from "../utils/siteConfig"
+import katex from 'katex';
+
 
 /**
  * post page
@@ -33,7 +35,24 @@ const scrolloptions = {
     rootMargin: "-10% 0px -80% 0px",
     threshold: 0.15
 };
+const [html, setHtml] = useState("");
 
+useEffect(() => {
+    // <br> を改行に戻す
+    let mathHtml = post.html.replace(/<br\s*\/?>/gi, "\n");
+
+    // インライン数式
+    mathHtml = mathHtml.replace(/\$(.+?)\$/g, (_, math) =>
+      katex.renderToString(math, { throwOnError: false })
+    );
+
+    // ブロック数式
+    mathHtml = mathHtml.replace(/\$\$(.+?)\$\$/gs, (_, math) =>
+      katex.renderToString(math, { displayMode: true, throwOnError: false })
+    );
+
+    setHtml(mathHtml);
+  }, [post.html]);
 
 useEffect(() => {
     const targetheadingh1  =  Array.from(document.querySelectorAll(".content-body > h1"));
@@ -110,7 +129,7 @@ useEffect(() => {
                                 {/* The main post content */}
                                 <section
                                     className="content-body load-external-scripts"
-                                    dangerouslySetInnerHTML={{ __html: fields.htmlKatex }}
+                                    dangerouslySetInnerHTML={{ __html: html }}
                                 />
                                 </section>
 
@@ -234,6 +253,7 @@ export const postQuery = graphql`
                 htmlKatex
             }
             childHtmlRehype {
+                htmlAst
                 tableOfContents
             }
             tags {
