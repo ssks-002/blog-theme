@@ -25,7 +25,6 @@ const iconSize = 50;
 const post = data.ghostPost;
 const authorTwitter = post.primary_author.twitter.substring(1);
 const tags = post.tags;
-const fields = post.fields;
 const relateposts = data.relatepost.edges;
 const prevurl = `/post/${prev.slug}`;
 const nexturl = `/post/${next.slug}`;
@@ -38,50 +37,68 @@ const scrolloptions = {
 const [html, setHtml] = useState("");
 
 useEffect(() => {
-    // <br> を改行に戻す
-    let mathHtml = post.html.replace(/<br\s*\/?>/gi, "\n");
+  let mathHtml = post.html;
 
-    // インライン数式
-    mathHtml = mathHtml.replace(/\$(.+?)\$/g, (_, math) =>
-      katex.renderToString(math, { throwOnError: false })
-    );
+  mathHtml = mathHtml.replace(/&amp;/g, "&");
 
-    // ブロック数式
-    mathHtml = mathHtml.replace(/\$\$(.+?)\$\$/gs, (_, math) =>
-      katex.renderToString(math, { displayMode: true, throwOnError: false })
-    );
+  mathHtml = mathHtml.replace(/<br\s*\/?>/gi, "\n");
 
-    setHtml(mathHtml);
-  }, [post.html]);
+  mathHtml = mathHtml.replace(/\$(.+?)\$/g, (_, math) =>
+    katex.renderToString(math, { throwOnError: false })
+  );
+
+  mathHtml = mathHtml.replace(/\$\$(.+?)\$\$/gs, (_, math) =>
+    katex.renderToString(math, { displayMode: true, throwOnError: false })
+  );
+
+  setHtml(mathHtml);
+}, [post.html]);
 
 useEffect(() => {
-    const targetheadingh1  =  Array.from(document.querySelectorAll(".content-body > h1"));
-    const targetheadingh2  =  Array.from(document.querySelectorAll(".content-body > h2"));
-    const targetheadingh3  =  Array.from(document.querySelectorAll(".content-body > h3"));
+    const contentBody = document.querySelector(".content-body");
+    if (!contentBody) return;
 
-    const targetheading = targetheadingh1.concat(targetheadingh2, targetheadingh3)
+    let observer = null;
 
-    const tochighlight = (entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const currentActive = document.querySelector(".toc-item.active");
-                if (currentActive) {
-                    currentActive.classList.remove("active");
+    const initIntersectionObserver = () => {
+        const headings = contentBody.querySelectorAll("h1, h2, h3");
+        if (headings.length === 0) return;
+
+        if (observer) return;
+
+        observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    document.querySelector(".toc-item.active")?.classList.remove("active");
+                    document.querySelector(`a[href="#${entry.target.id}"]`)?.classList.add("active");
                 }
-                const newActive = document.querySelector(`a[href="#${entry.target.id}"]`);
-                if (newActive) {
-                    newActive.classList.add("active");
-                }
-            }
-        })
+            });
+        }, scrolloptions);
+
+        headings.forEach(h => observer.observe(h));
+        console.log("IntersectionObserver initialized with headings:", headings.length);
     };
 
-    const observer = new IntersectionObserver(tochighlight, scrolloptions)
-    
-    targetheading.forEach( target => {
-        observer.observe(target);
-    })
-},[])
+    const mutationObserver = new MutationObserver((mutations) => {
+        for (const m of mutations) {
+            if (m.type === "childList" && m.addedNodes.length > 0) {
+                initIntersectionObserver();
+            }
+        }
+    });
+
+    mutationObserver.observe(contentBody, {
+        childList: true,
+        subtree: true,
+    });
+
+    initIntersectionObserver();
+
+    return () => {
+        mutationObserver.disconnect();
+        if (observer) observer.disconnect();
+    };
+}, []);
 
     return (
         <>
@@ -167,7 +184,7 @@ useEffect(() => {
                             <div className="sidebar">
                                 <div className="sidebar-container">
                                     <div className="sidebar-box">
-                                        <TableOfContents toc={toc} prev={prev} prevurl={prevurl} next={next} nexturl={nexturl}/>
+                                        <TableOfContents toc={toc} prev={prev} prevurl={prevurl} next={next} nexturl={nexturl} />
                                     </div>
                                 </div>
                             </div>
@@ -188,7 +205,7 @@ useEffect(() => {
                                 {/* The main post content */}
                                 <section
                                     className="content-body load-external-scripts"
-                                    dangerouslySetInnerHTML={{ __html: fields.htmlKatex }}
+                                    dangerouslySetInnerHTML={{ __html: html }}
                                 />
                                 </section>
                                 
@@ -249,11 +266,8 @@ export default Post;
 export const postQuery = graphql`
     query ($slug: String!, $tag: String!) {
         ghostPost(slug: { eq: $slug }) {
-            fields {
-                htmlKatex
-            }
             childHtmlRehype {
-                htmlAst
+                html
                 tableOfContents
             }
             tags {

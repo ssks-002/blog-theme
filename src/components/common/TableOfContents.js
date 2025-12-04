@@ -1,14 +1,10 @@
 import PropTypes from 'prop-types';
 import React from "react";
 import { Link } from "gatsby";
-import { ChevronRightIcon, ChevronLeftIcon } from '@heroicons/react/outline'
 
 /*require toc-node generate by gatsby-transformer-rehype */
 
 const TableOfContents = ({ toc, prev, prevurl, next, nexturl, setIsOpen }) => {
-  const toggleDrawer = () => {
-    setIsOpen((prevState) => !prevState)
-};
 
   return (
     <>
@@ -28,7 +24,7 @@ const TableOfContents = ({ toc, prev, prevurl, next, nexturl, setIsOpen }) => {
           </div>
       </Link>
     }
-    <div className="toc" onClick={toggleDrawer} >
+    <div className="toc">
       {toc && toc.map( h1  => {
         return(
         <>

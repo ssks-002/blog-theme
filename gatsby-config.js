@@ -82,17 +82,6 @@ module.exports = {
                 source: node => node.html,
             },
         },
-        {
-        resolve: `gatsby-transformer-katex`,
-        options: {
-            process: [
-            {
-                type: `GhostPost`,
-                fields: [`html`],
-            },
-            ],
-        },
-        },
         `gatsby-plugin-image`,
         `gatsby-plugin-sharp`,
         `gatsby-transformer-sharp`,
