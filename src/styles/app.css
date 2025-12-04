@@ -476,14 +476,14 @@ blockquote {
 
 blockquote p {
     margin: 0.8em 0;
-    font-size: 1.2em;
+    /*font-size: 1.2em;*/
     font-weight: 300;
 }
 
 blockquote small {
     display: inline-block;
     margin: 0.8em 0 0.8em 1.5em;
-    font-size: 0.9em;
+    /*font-size: 0.9em;*/
     opacity: 0.8;
 }
 /* Quotation marks */
