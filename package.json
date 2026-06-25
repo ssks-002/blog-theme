@@ -58,7 +58,7 @@
     "gatsby-remark-sub-sup": "^1.0.0",
     "gatsby-source-filesystem": "4.15.0",
     "gatsby-source-ghost": "5.0.0",
-    "gatsby-transformer-rehype": "file:plugins/gatsby-transformer-rehype",
+    "gatsby-transformer-rehype": "file:plugins/ssks002-gatsby-transformer-rehype",
     "gatsby-transformer-remark": "5.0",
     "gatsby-transformer-sharp": "4.15.1",
     "ghost-storage-cloudinary": "^2.2.5",
